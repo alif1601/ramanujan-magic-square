@@ -10,28 +10,23 @@
   <meta name="description" content="Generate Ramanujan-style 4×4 birthday magic squares. Reverse-search birth dates from Magic Sum + Year with leap-year accurate validation." />
   <meta name="robots" content="index,follow" />
 
-  <!-- Canonical: change to your final domain OR GitHub Pages URL -->
-  <link rel="canonical" href="https://YOUR_USERNAME.github.io/ramanujan-magic-square/" />
+  <link rel="canonical" href="https://alif1601.github.io/ramanujan-magic-square/" />
 
-  <!-- Open Graph -->
   <meta property="og:title" content="Ramanujan Magic Square (Birthday Generator)" />
   <meta property="og:description" content="Birth date → Magic Square. Magic Sum + Year → valid birth dates (leap-year accurate)." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://YOUR_USERNAME.github.io/ramanujan-magic-square/" />
-  <meta property="og:image" content="https://YOUR_USERNAME.github.io/ramanujan-magic-square/assets/og-image.png" />
+  <meta property="og:url" content="https://alif1601.github.io/ramanujan-magic-square/" />
+  <meta property="og:image" content="https://alif1601.github.io/ramanujan-magic-square/assets/og-image.png" />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Ramanujan Magic Square (Birthday Generator)" />
   <meta name="twitter:description" content="Generate a Ramanujan-style birthday magic square instantly." />
-  <meta name="twitter:image" content="https://YOUR_USERNAME.github.io/ramanujan-magic-square/assets/og-image.png" />
+  <meta name="twitter:image" content="https://alif1601.github.io/ramanujan-magic-square/assets/og-image.png" />
 
-  <!-- PWA -->
   <link rel="manifest" href="./site.webmanifest" />
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
 
-  <!-- Basic CSP (works for this single-file app) -->
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self';
                  img-src 'self' data:;
@@ -148,7 +143,6 @@
     a:hover { text-decoration: underline; }
   </style>
 
-  <!-- Structured data (SEO) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -255,7 +249,6 @@
   </div>
 
 <script>
-  // --- PWA service worker ---
   (function registerSW(){
     if (!("serviceWorker" in navigator)) return;
     window.addEventListener("load", () => {
@@ -288,7 +281,7 @@
   function pad2(n) { return String(n).padStart(2, "0"); }
 
   function parseDateInput(iso) {
-    if (!iso || !/^\\d{4}-\\d{2}-\\d{2}$/.test(iso)) return null;
+    if (!iso || !/^\d{4}-\d{2}-\d{2}$/.test(iso)) return null;
     const [Y, M, D] = iso.split("-").map(Number);
     const maxD = daysInMonth(M, Y);
     if (M < 1 || M > 12) return null;
@@ -329,7 +322,6 @@
     el.className = "msg " + (kind || "");
   }
 
-  // Section 1
   const dob = document.getElementById("dob");
   const btnGen = document.getElementById("btnGen");
   const btnClear1 = document.getElementById("btnClear1");
@@ -339,7 +331,6 @@
   const sum1 = document.getElementById("sum1");
   const toprow1 = document.getElementById("toprow1");
 
-  // Section 2
   const sumIn = document.getElementById("sumIn");
   const yearIn = document.getElementById("yearIn");
   const autoSquare = document.getElementById("autoSquare");
@@ -369,7 +360,6 @@
     out1.style.display = "flex";
     setMsg(msg1, `Done! Generated square for ${pad2(p.d)}-${pad2(p.m)}-${p.y}.`, "good");
 
-    // convenience
     sumIn.value = S;
     yearIn.value = p.y;
   });
