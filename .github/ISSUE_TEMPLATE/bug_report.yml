@@ -1,34 +1,70 @@
 name: Bug report
-description: Report a bug in the magic square generator
-title: "[BUG]"
+description: Report a bug in the Ramanujan Magic Square app
+title: "[BUG] "
 labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to report an issue! Please fill in the details below.
+        Thanks for reporting! Please fill out the form below so we can fix it faster.
 
-  - type: input
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear and concise description of the bug.
+      placeholder: "Example: Clicking 'Generate Square' shows nothing..."
+    validations:
+      required: true
+
+  - type: textarea
     id: steps
     attributes:
       label: Steps to reproduce
-      description: Describe how to reproduce the issue
-      placeholder: "1. Go to ..."
+      description: How can we reproduce the bug?
+      placeholder: |
+        1. Go to ...
+        2. Enter ...
+        3. Click ...
+    validations:
+      required: true
 
-  - type: input
+  - type: textarea
     id: expected
     attributes:
       label: Expected behavior
-      placeholder: "The square should appear..."
+      placeholder: "What did you expect to happen?"
+    validations:
+      required: true
 
-  - type: input
+  - type: textarea
     id: actual
     attributes:
       label: Actual behavior
-      placeholder: "No output seen..."
+      placeholder: "What actually happened? Include screenshots if possible."
+    validations:
+      required: false
 
   - type: input
     id: browser
     attributes:
-      label: Browser / device
-      placeholder: "Chrome on Windows"
+      label: Browser
+      placeholder: "Chrome / Firefox / Safari + version"
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Device / OS
+      placeholder: "Windows / Android / iOS / macOS"
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      placeholder: "https://alif1601.github.io/ramanujan-magic-square/"
+    validations:
+      required: false
