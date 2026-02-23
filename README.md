@@ -1,1 +1,0 @@
-# ramanujan-magic-square
