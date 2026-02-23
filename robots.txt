@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://YOUR_USERNAME.github.io/ramanujan-magic-square/sitemap.xml
+Sitemap: https://alif1601.github.io/ramanujan-magic-square/sitemap.xml
