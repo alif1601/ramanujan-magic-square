@@ -1,4 +1,4 @@
-const CACHE_NAME = "ramanujan-magic-square-v1";
+const CACHE_NAME = "ramanujan-magic-square-v2";
 const ASSETS = [
   "./",
   "./index.html",
