@@ -1,0 +1,25 @@
+name: Feature request
+description: Suggest a new feature or enhancement
+title: "[FEATURE]"
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the feature idea! Describe your suggestion below.
+
+  - type: input
+    id: description
+    attributes:
+      label: Feature description
+      placeholder: "Explain the feature idea..."
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - High
+        - Medium
+        - Low
+      default: Medium
