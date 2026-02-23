@@ -1,7 +1,7 @@
 # 🎩 Ramanujan Magic Square  
 ### Birthday Magic Square Generator (Inspired by Srinivasa Ramanujan)
 
-[![GitHub Pages](https://img.shields.io/badge/Live-GitHub%20Pages-success?logo=github)](https://alif1601.github.io/ramanujan-magic-square/)
+[![GitHub Pages](https://img.shields.io/badge/Live-GitHub%20Pages-success?logo=github)](https://alif1601.github.io/ramanujan-magic-square/?v2)
 ![License](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Repo Size](https://img.shields.io/github/repo-size/alif1601/ramanujan-magic-square)
 ![Last Commit](https://img.shields.io/github/last-commit/alif1601/ramanujan-magic-square)
