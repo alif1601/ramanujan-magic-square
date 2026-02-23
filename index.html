@@ -157,6 +157,31 @@
 </head>
 
 <body>
+  <div id="updateBanner" style="
+  display:none;
+  position: fixed;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  z-index: 9999;
+  background: rgba(18,27,47,.95);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 14px;
+  padding: 12px 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  color: #e8eeff;
+">
+  <div style="display:flex; gap:10px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+    <div style="font-size:13px;">
+      🔄 <b>New version available.</b> Refresh to update.
+    </div>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <button id="btnRefreshNow" type="button" style="width:auto; padding:8px 12px;">Refresh</button>
+      <button id="btnDismissUpdate" type="button" style="width:auto; padding:8px 12px; opacity:.9;">Later</button>
+    </div>
+  </div>
+</div>
+  
   <div class="wrap">
     <header>
       <div>
@@ -265,12 +290,66 @@
 
 <script>
   // --- PWA service worker ---
-  (function registerSW(){
-    if (!("serviceWorker" in navigator)) return;
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("./sw.js").catch(() => {});
-    });
-  })();
+(function registerSW(){
+  if (!("serviceWorker" in navigator)) return;
+
+  const banner = document.getElementById("updateBanner");
+  const btnRefresh = document.getElementById("btnRefreshNow");
+  const btnDismiss = document.getElementById("btnDismissUpdate");
+
+  function showBanner(reg) {
+    if (!banner) return;
+    banner.style.display = "block";
+
+    btnDismiss?.addEventListener("click", () => {
+      banner.style.display = "none";
+    }, { once: true });
+
+    btnRefresh?.addEventListener("click", async () => {
+      // Ask waiting SW to activate, then reload once it controls the page
+      if (reg && reg.waiting) {
+        reg.waiting.postMessage({ type: "SKIP_WAITING" });
+      } else {
+        window.location.reload();
+      }
+    }, { once: true });
+  }
+
+  window.addEventListener("load", async () => {
+    try {
+      const reg = await navigator.serviceWorker.register("./sw.js");
+
+      // If there's already a waiting worker, prompt now
+      if (reg.waiting) showBanner(reg);
+
+      // When a new SW is found and installed, prompt
+      reg.addEventListener("updatefound", () => {
+        const newWorker = reg.installing;
+        if (!newWorker) return;
+
+        newWorker.addEventListener("statechange", () => {
+          if (newWorker.state === "installed") {
+            // If there's an existing controller, it means update is available
+            if (navigator.serviceWorker.controller) {
+              showBanner(reg);
+            }
+          }
+        });
+      });
+
+      // When the new SW takes control, reload once
+      let reloaded = false;
+      navigator.serviceWorker.addEventListener("controllerchange", () => {
+        if (reloaded) return;
+        reloaded = true;
+        window.location.reload();
+      });
+
+    } catch {
+      // Ignore SW errors
+    }
+  });
+})();
 
   function isLeapYear(y) {
     if (y % 400 === 0) return true;
