@@ -18,7 +18,7 @@
 
 ## 📸 Preview
 
-![App Preview](https://alif1601.github.io/ramanujan-magic-square/assets/og-image.png)
+![App Preview](./assets/og-image.png)
 
 ---
 
