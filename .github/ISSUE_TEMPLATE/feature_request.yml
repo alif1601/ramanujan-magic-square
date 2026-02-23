@@ -1,18 +1,30 @@
 name: Feature request
-description: Suggest a new feature or enhancement
-title: "[FEATURE]"
+description: Suggest an idea to improve the Ramanujan Magic Square app
+title: "[FEATURE] "
 labels: ["enhancement"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for the feature idea! Describe your suggestion below.
+        Thanks for the idea! Please describe what you want and why it helps.
 
-  - type: input
-    id: description
+  - type: textarea
+    id: problem
     attributes:
-      label: Feature description
-      placeholder: "Explain the feature idea..."
+      label: Problem / Motivation
+      description: What problem does this feature solve?
+      placeholder: "Example: I want to download the magic square as an image..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How should it work?
+      placeholder: "Example: Add a 'Download PNG' button..."
+    validations:
+      required: true
 
   - type: dropdown
     id: priority
@@ -22,4 +34,14 @@ body:
         - High
         - Medium
         - Low
-      default: Medium
+      default: 1
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      placeholder: "Any alternative approaches?"
+    validations:
+      required: false
