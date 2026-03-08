@@ -6,23 +6,24 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark" />
   <meta name="theme-color" content="#0b1220" />
-  <link rel="preload" as="image" href="./assets/og-image.png">
+
+  <link rel="preload" as="image" href="./assets/og-image.png" />
+
   <title>Ramanujan Magic Square Generator – Birthday 4×4 Magic Square Calculator</title>
-  <meta name="description" content="Generate a Ramanujan-style 4x4 birthday magic square instantly. Calculate magic sum, reverse-search birth dates, download PNG and share your personalised magic square." />
-  <meta name="description" content="Generate Ramanujan-style 4×4 birthday magic squares. Reverse-search birth dates from Magic Sum + Year with leap-year accurate validation. Download PNG and share links." />
+  <meta name="description" content="Generate a Ramanujan-style 4x4 birthday magic square instantly. Calculate magic sum, reverse-search birth dates, download PNG, and share your personalized magic square." />
   <meta name="robots" content="index,follow" />
 
   <link rel="canonical" href="https://alif1601.github.io/ramanujan-magic-square/" />
 
-  <meta property="og:title" content="Ramanujan Magic Square (Birthday Generator)" />
-  <meta property="og:description" content="Birth date → Magic Square. Magic Sum + Year → valid birth dates (leap-year accurate). Download PNG + share link." />
+  <meta property="og:title" content="Ramanujan Magic Square Generator – Birthday 4×4 Magic Square Calculator" />
+  <meta property="og:description" content="Generate a Ramanujan-style 4×4 birthday magic square, reverse-search dates, download PNG, and share links." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://alif1601.github.io/ramanujan-magic-square/" />
   <meta property="og:image" content="https://alif1601.github.io/ramanujan-magic-square/assets/og-image.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Ramanujan Magic Square (Birthday Generator)" />
-  <meta name="twitter:description" content="Generate a Ramanujan-style birthday magic square instantly. Download PNG + share link." />
+  <meta name="twitter:title" content="Ramanujan Magic Square Generator – Birthday 4×4 Magic Square Calculator" />
+  <meta name="twitter:description" content="Generate a Ramanujan-style 4×4 birthday magic square instantly. Download PNG and share links." />
   <meta name="twitter:image" content="https://alif1601.github.io/ramanujan-magic-square/assets/og-image.png" />
 
   <link rel="manifest" href="./site.webmanifest" />
@@ -39,21 +40,66 @@
                  frame-ancestors 'none';" />
 
   <style>
-    :root { --bg:#0b1220; --card:#121b2f; --muted:#9aa7c2; --text:#e8eeff; --accent:#6ee7ff; --good:#7CFF9A; --bad:#ff7c7c; }
+    :root {
+      --bg:#0b1220;
+      --card:#121b2f;
+      --muted:#9aa7c2;
+      --text:#e8eeff;
+      --accent:#6ee7ff;
+      --good:#7CFF9A;
+      --bad:#ff7c7c;
+    }
+
     * { box-sizing: border-box; }
+
     body {
-      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% 10%, #12224a 0%, transparent 55%),
-                  radial-gradient(1000px 500px at 80% 20%, #1b2c5a 0%, transparent 50%),
-                  var(--bg);
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 20% 10%, #12224a 0%, transparent 55%),
+        radial-gradient(1000px 500px at 80% 20%, #1b2c5a 0%, transparent 50%),
+        var(--bg);
       color: var(--text);
     }
-    .wrap { max-width: 980px; margin: 0 auto; padding: 22px; }
-    header { display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap; }
-    h1 { margin: 0; font-size: 20px; letter-spacing: .2px; }
-    .sub { margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.35; }
-    .grid { margin-top: 18px; display:grid; gap: 14px; grid-template-columns: 1fr; }
-    @media (min-width: 860px) { .grid { grid-template-columns: 1fr 1fr; } }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 22px;
+    }
+
+    header {
+      display:flex;
+      gap:14px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+      letter-spacing: .2px;
+    }
+
+    .sub {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .grid {
+      margin-top: 18px;
+      display:grid;
+      gap: 14px;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 860px) {
+      .grid { grid-template-columns: 1fr 1fr; }
+    }
+
     .card {
       background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
       border: 1px solid rgba(255,255,255,.08);
@@ -61,8 +107,19 @@
       padding: 16px;
       box-shadow: 0 10px 30px rgba(0,0,0,.25);
     }
-    .card h2 { margin: 0 0 10px; font-size: 15px; }
-    label { display:block; font-size: 12px; color: var(--muted); margin: 10px 0 6px; }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 15px;
+    }
+
+    label {
+      display:block;
+      font-size: 12px;
+      color: var(--muted);
+      margin: 10px 0 6px;
+    }
+
     input, button {
       width: 100%;
       background: rgba(255,255,255,.06);
@@ -73,7 +130,12 @@
       outline: none;
       font-size: 14px;
     }
-    input:focus { border-color: rgba(110,231,255,.55); box-shadow: 0 0 0 3px rgba(110,231,255,.16); }
+
+    input:focus {
+      border-color: rgba(110,231,255,.55);
+      box-shadow: 0 0 0 3px rgba(110,231,255,.16);
+    }
+
     button {
       cursor:pointer;
       background: linear-gradient(180deg, rgba(110,231,255,.20), rgba(110,231,255,.10));
@@ -81,15 +143,41 @@
       transition: transform .05s ease;
       font-weight: 700;
     }
+
     button:active { transform: translateY(1px); }
-    .row { display:grid; gap: 10px; grid-template-columns: 1fr; }
-    @media (min-width: 520px) { .row { grid-template-columns: 1fr 1fr; } }
-    .hint { font-size: 12px; color: var(--muted); margin-top: 8px; }
-    .msg { margin-top: 10px; font-size: 13px; }
+
+    .row {
+      display:grid;
+      gap: 10px;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 520px) {
+      .row { grid-template-columns: 1fr 1fr; }
+    }
+
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    .msg {
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
     .msg.good { color: var(--good); }
     .msg.bad { color: var(--bad); }
 
-    .sq-wrap { margin-top: 10px; display:flex; gap: 14px; flex-wrap:wrap; align-items:flex-start; }
+    .sq-wrap {
+      margin-top: 10px;
+      display:flex;
+      gap: 14px;
+      flex-wrap:wrap;
+      align-items:flex-start;
+    }
+
     table.square {
       border-collapse: separate;
       border-spacing: 8px;
@@ -99,6 +187,7 @@
       border: 1px solid rgba(255,255,255,.08);
       min-width: 260px;
     }
+
     table.square td {
       text-align:center;
       padding: 10px 8px;
@@ -109,16 +198,23 @@
       font-variant-numeric: tabular-nums;
       font-weight: 750;
     }
+
     .pill {
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 10px; border-radius: 999px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 999px;
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.05);
-      font-size: 12px; color: var(--muted);
+      font-size: 12px;
+      color: var(--muted);
       margin-top: 8px;
     }
+
     .pill b { color: var(--text); }
     .accent { color: var(--accent); }
+
     .results {
       margin-top: 10px;
       max-height: 260px;
@@ -127,6 +223,7 @@
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.18);
     }
+
     .results button.item {
       width: 100%;
       text-align:left;
@@ -137,74 +234,166 @@
       padding: 10px 12px;
       font-weight: 650;
     }
+
     .results button.item:hover { background: rgba(255,255,255,.05); }
     .results button.item:last-child { border-bottom: 0; }
-    footer { margin-top: 18px; color: var(--muted); font-size: 12px; }
-    code.kbd { padding: 2px 6px; border-radius: 8px; background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.10); }
-    a { color: var(--accent); text-decoration: none; }
+
+    footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    code.kbd {
+      padding: 2px 6px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
     a:hover { text-decoration: underline; }
+
+    .seo-section {
+      margin-top: 40px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .seo-section h2 {
+      margin-top: 24px;
+      margin-bottom: 8px;
+    }
+
+    .update-btn {
+      width: auto;
+      padding: 10px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.16),
+        rgba(255, 255, 255, 0.08)
+      );
+      color: #e8eeff;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.14);
+      transition:
+        transform 0.22s ease,
+        background 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+    }
+
+    .update-btn:hover {
+      background: linear-gradient(
+        180deg,
+        rgba(110, 231, 255, 0.26),
+        rgba(110, 231, 255, 0.12)
+      );
+      border-color: rgba(110, 231, 255, 0.48);
+      box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.28),
+        0 0 0 1px rgba(110, 231, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .update-btn:active {
+      transform: translateY(1px) scale(0.99);
+      box-shadow:
+        0 6px 16px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .update-btn:focus-visible {
+      outline: none;
+      border-color: rgba(110, 231, 255, 0.58);
+      box-shadow:
+        0 0 0 4px rgba(110, 231, 255, 0.16),
+        0 10px 24px rgba(0, 0, 0, 0.24);
+    }
   </style>
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "Ramanujan Magic Square (Birthday Generator)",
+    "name": "Ramanujan Magic Square Generator",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Any",
     "description": "Generate Ramanujan-style 4×4 birthday magic squares and reverse-search dates from Magic Sum + Year."
   }
   </script>
-  <script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "FAQPage",
- "mainEntity": [{
-   "@type": "Question",
-   "name": "What is a Ramanujan magic square?",
-   "acceptedAnswer": {
-     "@type": "Answer",
-     "text": "A Ramanujan magic square is a 4x4 grid where each row, column and diagonal sums to the same number."
-   }
- }]
-}
-</script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
 
-gtag('config', 'G-XXXXXXXX');
-</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a Ramanujan magic square?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Ramanujan magic square is a 4×4 grid where each row, column, and diagonal sums to the same number."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the birthday magic square work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The magic sum is calculated from the day, month, and year components of a birth date, then arranged in a special 4×4 pattern."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body>
   <div id="updateBanner" style="
-  display:none;
-  position: fixed;
-  left: 14px;
-  right: 14px;
-  bottom: 14px;
-  z-index: 9999;
-  background: rgba(18,27,47,.95);
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 14px;
-  padding: 12px 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.35);
-  color: #e8eeff;
-">
-  <div style="display:flex; gap:10px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
-    <div style="font-size:13px;">
-      🔄 <b>New version available.</b> Refresh to update.
-    </div>
-    <div style="display:flex; gap:10px; align-items:center;">
-      <button id="btnRefreshNow" type="button" style="width:auto; padding:8px 12px;">Refresh</button>
-      <button id="btnDismissUpdate" type="button" style="width:auto; padding:8px 12px; opacity:.9;">Later</button>
+    display:none;
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    z-index: 9999;
+    background: linear-gradient(
+      180deg,
+      rgba(18,27,47,0.82),
+      rgba(18,27,47,0.68)
+    );
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow:
+      0 12px 32px rgba(0,0,0,.38),
+      inset 0 1px 0 rgba(255,255,255,.08);
+    color: #e8eeff;
+  ">
+    <div style="display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+      <div style="font-size:13px; line-height:1.5;">
+        🔄 <b>New version available.</b> Refresh to update your app.
+      </div>
+
+      <div style="display:flex; gap:10px; align-items:center;">
+        <button id="btnRefreshNow" class="update-btn" type="button">Refresh</button>
+        <button id="btnDismissUpdate" class="update-btn" type="button" style="opacity:.92;">Later</button>
+      </div>
     </div>
   </div>
-</div>
-  
+
   <div class="wrap">
     <header>
       <div>
@@ -212,7 +401,9 @@ gtag('config', 'G-XXXXXXXX');
         <div class="sub">
           Works both ways: <span class="accent">Birth date → Magic Square</span> and
           <span class="accent">Magic Sum + Year → valid birth dates</span> (with leap-year validation).
-          <div class="hint">New: <span class="accent">Download PNG</span> + <span class="accent">Share link</span> (prefilled date).</div>
+          <div class="hint">
+            New: <span class="accent">Download PNG</span> + <span class="accent">Share link</span> (prefilled date).
+          </div>
         </div>
       </div>
     </header>
@@ -243,7 +434,7 @@ gtag('config', 'G-XXXXXXXX');
             <div class="pill">Top row: <b id="toprow1"></b></div>
             <div class="pill">Verify: <b id="verify1"></b></div>
           </div>
-          <div style="flex:1; min-width: 220px;">
+          <div style="flex:1; min-width:220px;">
             <div class="pill">Formula: <b>S = d + m + (y/100) + (y%100)</b></div>
             <div class="hint" style="margin-top:10px;">
               This generates a true 4×4 magic square (all rows/cols/diagonals sum to S).
@@ -303,25 +494,25 @@ gtag('config', 'G-XXXXXXXX');
         </div>
       </section>
     </div>
-<section style="margin-top:40px; font-size:14px; line-height:1.6;">
-<h2>What is a Ramanujan Magic Square?</h2>
 
-<p>
-A Ramanujan magic square is a special 4×4 grid where the sum of each row,
-column, and diagonal equals the same number called the magic sum.
-This tool generates a personalised Ramanujan-style magic square
-based on your birth date.
-</p>
+    <section class="seo-section">
+      <h2>What is a Ramanujan Magic Square?</h2>
+      <p>
+        A Ramanujan magic square is a special 4×4 grid where the sum of each row,
+        column, and diagonal equals the same number called the magic sum.
+        This tool generates a personalized Ramanujan-style magic square
+        based on your birth date.
+      </p>
 
-<h2>How does the Birthday Magic Square work?</h2>
+      <h2>How does the Birthday Magic Square work?</h2>
+      <p>
+        The magic sum is calculated from the day, month, and year digits of
+        your birth date. Using a special construction pattern inspired by
+        Srinivasa Ramanujan, the tool builds a 4×4 square where every row,
+        column, and diagonal produces the same total.
+      </p>
+    </section>
 
-<p>
-The magic sum is calculated from the day, month and year digits of
-your birth date. Using a special construction pattern inspired by
-Srinivasa Ramanujan, the tool builds a 4×4 square where every row,
-column and diagonal produces the same total.
-</p>
-</section>
     <footer>
       Quick test: <code class="kbd">04-09-1998</code> ⇒ sum <code class="kbd">130</code>.
       <span style="margin-left:10px;">•</span>
@@ -329,542 +520,555 @@ column and diagonal produces the same total.
     </footer>
   </div>
 
-<script>
-  // --- PWA service worker ---
-(function registerSW(){
-  if (!("serviceWorker" in navigator)) return;
+  <script>
+    (function registerSW() {
+      if (!("serviceWorker" in navigator)) return;
 
-  const banner = document.getElementById("updateBanner");
-  const btnRefresh = document.getElementById("btnRefreshNow");
-  const btnDismiss = document.getElementById("btnDismissUpdate");
+      const banner = document.getElementById("updateBanner");
+      const btnRefresh = document.getElementById("btnRefreshNow");
+      const btnDismiss = document.getElementById("btnDismissUpdate");
 
-  function showBanner(reg) {
-    if (!banner) return;
-    banner.style.display = "block";
+      function showBanner(reg) {
+        if (!banner) return;
+        banner.style.display = "block";
 
-    btnDismiss?.addEventListener("click", () => {
-      banner.style.display = "none";
-    }, { once: true });
+        btnDismiss?.addEventListener("click", () => {
+          banner.style.display = "none";
+        }, { once: true });
 
-    btnRefresh?.addEventListener("click", async () => {
-      // Ask waiting SW to activate, then reload once it controls the page
-      if (reg && reg.waiting) {
-        reg.waiting.postMessage({ type: "SKIP_WAITING" });
-      } else {
-        window.location.reload();
-      }
-    }, { once: true });
-  }
-
-  window.addEventListener("load", async () => {
-    try {
-      const reg = await navigator.serviceWorker.register("./sw.js");
-
-      // If there's already a waiting worker, prompt now
-      if (reg.waiting) showBanner(reg);
-
-      // When a new SW is found and installed, prompt
-      reg.addEventListener("updatefound", () => {
-        const newWorker = reg.installing;
-        if (!newWorker) return;
-
-        newWorker.addEventListener("statechange", () => {
-          if (newWorker.state === "installed") {
-            // If there's an existing controller, it means update is available
-            if (navigator.serviceWorker.controller) {
-              showBanner(reg);
-            }
+        btnRefresh?.addEventListener("click", () => {
+          if (reg && reg.waiting) {
+            reg.waiting.postMessage({ type: "SKIP_WAITING" });
+          } else {
+            window.location.reload();
           }
-        });
-      });
-
-      // When the new SW takes control, reload once
-      let reloaded = false;
-      navigator.serviceWorker.addEventListener("controllerchange", () => {
-        if (reloaded) return;
-        reloaded = true;
-        window.location.reload();
-      });
-
-    } catch {
-      // Ignore SW errors
-    }
-  });
-})();
-
-  function isLeapYear(y) {
-    if (y % 400 === 0) return true;
-    if (y % 100 === 0) return false;
-    return (y % 4 === 0);
-  }
-  function daysInMonth(m, y) {
-    switch (m) {
-      case 1: return 31;
-      case 2: return isLeapYear(y) ? 29 : 28;
-      case 3: return 31;
-      case 4: return 30;
-      case 5: return 31;
-      case 6: return 30;
-      case 7: return 31;
-      case 8: return 31;
-      case 9: return 30;
-      case 10: return 31;
-      case 11: return 30;
-      case 12: return 31;
-      default: return 0;
-    }
-  }
-  function pad2(n) { return String(n).padStart(2, "0"); }
-
-  function parseDateInput(iso) {
-    if (!iso || !/^\d{4}-\d{2}-\d{2}$/.test(iso)) return null;
-    const [Y, M, D] = iso.split("-").map(Number);
-    const maxD = daysInMonth(M, Y);
-    if (M < 1 || M > 12) return null;
-    if (D < 1 || D > maxD) return null;
-    return { d: D, m: M, y: Y };
-  }
-
-  // ✅ Real Ramanujan-style 4×4 magic square:
-  // Uses (d, m, a, b) and produces a true magic square sum S = d+m+a+b.
-  function buildMagicSquare(d, m, y) {
-    const a = Math.floor(y / 100);
-    const b = y % 100;
-    const S = d + m + a + b;
-
-    const sq = [
-      [d,     m,     a,     b],
-      [b + 1, a - 1, m - 3, d + 3],
-      [m - 2, d + 2, b + 2, a - 2],
-      [a + 1, b - 1, d + 1, m - 1],
-    ];
-
-    return { sq, S, topRow: `${d} + ${m} + ${a} + ${b} = ${S}` };
-  }
-
-  function renderSquare(tableEl, sq) {
-    tableEl.innerHTML = "";
-    const tbody = document.createElement("tbody");
-    for (let i = 0; i < 4; i++) {
-      const tr = document.createElement("tr");
-      for (let j = 0; j < 4; j++) {
-        const td = document.createElement("td");
-        td.textContent = sq[i][j];
-        tr.appendChild(td);
+        }, { once: true });
       }
-      tbody.appendChild(tr);
-    }
-    tableEl.appendChild(tbody);
-  }
 
-  function setMsg(el, text, kind) {
-    el.textContent = text || "";
-    el.className = "msg " + (kind || "");
-  }
+      window.addEventListener("load", async () => {
+        try {
+          const reg = await navigator.serviceWorker.register("./sw.js");
 
-  function verifyMagicSquare(sq, expectedSum) {
-    if (!sq || sq.length !== 4) return { ok: false, detail: "Invalid square" };
+          if (reg.waiting) showBanner(reg);
 
-    const sums = [];
-    // rows
-    for (let r = 0; r < 4; r++) sums.push(sq[r].reduce((a, v) => a + v, 0));
-    // cols
-    for (let c = 0; c < 4; c++) {
-      let s = 0;
-      for (let r = 0; r < 4; r++) s += sq[r][c];
-      sums.push(s);
-    }
-    // diagonals
-    let d1 = 0, d2 = 0;
-    for (let i = 0; i < 4; i++) {
-      d1 += sq[i][i];
-      d2 += sq[i][3 - i];
-    }
-    sums.push(d1, d2);
+          reg.addEventListener("updatefound", () => {
+            const newWorker = reg.installing;
+            if (!newWorker) return;
 
-    const ok = sums.every(v => v === expectedSum);
-    if (ok) return { ok: true, detail: `✅ All rows/cols/diagonals = ${expectedSum}` };
+            newWorker.addEventListener("statechange", () => {
+              if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+                showBanner(reg);
+              }
+            });
+          });
 
-    const bad = sums.filter(v => v !== expectedSum);
-    return { ok: false, detail: `❌ Not magic. Expected ${expectedSum}, mismatches: ${bad.join(", ")}` };
-  }
-
-  // -------- Share link helpers --------
-  function getBaseUrl() {
-    // Works on GitHub Pages project sites
-    return window.location.origin + window.location.pathname.replace(/\/index\.html$/, "");
-  }
-  function buildShareUrl(d, m, y) {
-    const base = getBaseUrl().replace(/\/$/, "");
-    const qs = new URLSearchParams({ d: String(d), m: String(m), y: String(y) });
-    return `${base}/?${qs.toString()}`;
-  }
-  async function copyToClipboard(text) {
-    try {
-      await navigator.clipboard.writeText(text);
-      return true;
-    } catch {
-      const ta = document.createElement("textarea");
-      ta.value = text;
-      ta.style.position = "fixed";
-      ta.style.left = "-9999px";
-      document.body.appendChild(ta);
-      ta.select();
-      const ok = document.execCommand("copy");
-      document.body.removeChild(ta);
-      return ok;
-    }
-  }
-
-  // -------- PNG helpers --------
-  function roundRect(ctx, x, y, w, h, r, fill, stroke) {
-    const radius = typeof r === "number" ? { tl: r, tr: r, br: r, bl: r } : r;
-    ctx.beginPath();
-    ctx.moveTo(x + radius.tl, y);
-    ctx.lineTo(x + w - radius.tr, y);
-    ctx.quadraticCurveTo(x + w, y, x + w, y + radius.tr);
-    ctx.lineTo(x + w, y + h - radius.br);
-    ctx.quadraticCurveTo(x + w, y + h, x + w - radius.br, y + h);
-    ctx.lineTo(x + radius.bl, y + h);
-    ctx.quadraticCurveTo(x, y + h, x, y + h - radius.bl);
-    ctx.lineTo(x, y + radius.tl);
-    ctx.quadraticCurveTo(x, y, x + radius.tl, y);
-    ctx.closePath();
-    if (fill) ctx.fill();
-    if (stroke) ctx.stroke();
-  }
-
-  function drawSquareToCanvas(ctx, sq, S, title) {
-    const W = ctx.canvas.width;
-    const H = ctx.canvas.height;
-
-    // background
-    ctx.fillStyle = "#0b1220";
-    ctx.fillRect(0, 0, W, H);
-
-    // title
-    ctx.fillStyle = "#e8eeff";
-    ctx.font = "700 44px system-ui, -apple-system, Segoe UI, Roboto, Arial";
-    ctx.fillText(title, 60, 90);
-
-    // subtitle
-    ctx.fillStyle = "#9aa7c2";
-    ctx.font = "500 28px system-ui, -apple-system, Segoe UI, Roboto, Arial";
-    ctx.fillText(`Magic Sum: ${S}`, 60, 135);
-
-    // grid area
-    const gridSize = 520;
-    const x0 = 60;
-    const y0 = 180;
-    const cell = gridSize / 4;
-
-    // card
-    ctx.fillStyle = "rgba(255,255,255,0.06)";
-    roundRect(ctx, x0 - 18, y0 - 18, gridSize + 36, gridSize + 36, 24, true, false);
-
-    // cells
-    ctx.font = "700 44px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-
-    for (let r = 0; r < 4; r++) {
-      for (let c = 0; c < 4; c++) {
-        const x = x0 + c * cell;
-        const y = y0 + r * cell;
-
-        ctx.fillStyle = "rgba(255,255,255,0.08)";
-        roundRect(ctx, x + 10, y + 10, cell - 20, cell - 20, 18, true, false);
-
-        ctx.fillStyle = "#e8eeff";
-        ctx.fillText(String(sq[r][c]), x + cell / 2, y + cell / 2);
-      }
-    }
-
-    // footer
-    ctx.textAlign = "left";
-    ctx.fillStyle = "#6ee7ff";
-    ctx.font = "600 24px system-ui, -apple-system, Segoe UI, Roboto, Arial";
-    ctx.fillText("Ramanujan Magic Square", 60, H - 60);
-
-    ctx.fillStyle = "#9aa7c2";
-    ctx.font = "500 20px system-ui, -apple-system, Segoe UI, Roboto, Arial";
-    ctx.fillText(getBaseUrl(), 60, H - 30);
-  }
-
-  function downloadSquarePNG(sq, S, label) {
-    const canvas = document.createElement("canvas");
-    canvas.width = 1200;
-    canvas.height = 800;
-
-    const ctx = canvas.getContext("2d");
-    drawSquareToCanvas(ctx, sq, S, `Birthday: ${label}`);
-
-    const a = document.createElement("a");
-    a.download = `ramanujan-magic-square-${label}.png`;
-    a.href = canvas.toDataURL("image/png");
-    a.click();
-  }
-
-  // ------- DOM -------
-  const dob = document.getElementById("dob");
-  const btnGen = document.getElementById("btnGen");
-  const btnVerify1 = document.getElementById("btnVerify1");
-  const btnPng1 = document.getElementById("btnPng1");
-  const btnShare1 = document.getElementById("btnShare1");
-  const btnClear1 = document.getElementById("btnClear1");
-  const msg1 = document.getElementById("msg1");
-  const out1 = document.getElementById("out1");
-  const sq1 = document.getElementById("sq1");
-  const sum1 = document.getElementById("sum1");
-  const toprow1 = document.getElementById("toprow1");
-  const verify1 = document.getElementById("verify1");
-
-  const sumIn = document.getElementById("sumIn");
-  const yearIn = document.getElementById("yearIn");
-  const autoSquare = document.getElementById("autoSquare");
-  const btnFind = document.getElementById("btnFind");
-  const btnClear2 = document.getElementById("btnClear2");
-  const msg2 = document.getElementById("msg2");
-  const resultBox = document.getElementById("resultBox");
-  const results = document.getElementById("results");
-  const count2 = document.getElementById("count2");
-  const picked = document.getElementById("picked");
-  const pickedDate = document.getElementById("pickedDate");
-  const sq2 = document.getElementById("sq2");
-  const sum2 = document.getElementById("sum2");
-  const toprow2 = document.getElementById("toprow2");
-  const verify2 = document.getElementById("verify2");
-  const btnVerify2 = document.getElementById("btnVerify2");
-  const btnPng2 = document.getElementById("btnPng2");
-  const btnShare2 = document.getElementById("btnShare2");
-
-  let lastSq1 = null;
-  let lastS1 = null;
-
-  // ------- Section 1 actions -------
-  btnGen.addEventListener("click", () => {
-    const p = parseDateInput(dob.value);
-    if (!p) {
-      out1.style.display = "none";
-      setMsg(msg1, "Please pick a valid date.", "bad");
-      return;
-    }
-
-    const { sq, S, topRow } = buildMagicSquare(p.d, p.m, p.y);
-    lastSq1 = sq;
-    lastS1 = S;
-
-    renderSquare(sq1, sq);
-    sum1.textContent = S;
-    toprow1.textContent = topRow;
-
-    const v = verifyMagicSquare(sq, S);
-    verify1.textContent = v.detail;
-
-    out1.style.display = "flex";
-    setMsg(msg1, `Done! Generated square for ${pad2(p.d)}-${pad2(p.m)}-${p.y}.`, "good");
-
-    // convenience
-    sumIn.value = S;
-    yearIn.value = p.y;
-  });
-
-  btnVerify1.addEventListener("click", () => {
-    if (!lastSq1 || !Number.isFinite(lastS1)) {
-      setMsg(msg1, "Generate a square first, then verify.", "bad");
-      return;
-    }
-    const v = verifyMagicSquare(lastSq1, lastS1);
-    verify1.textContent = v.detail;
-    setMsg(msg1, v.ok ? "Magic square verified ✅" : "Verification failed ❌", v.ok ? "good" : "bad");
-  });
-
-  btnPng1.addEventListener("click", () => {
-    const p = parseDateInput(dob.value);
-    if (!p) { setMsg(msg1, "Pick a valid date first.", "bad"); return; }
-    const { sq, S } = buildMagicSquare(p.d, p.m, p.y);
-    const label = `${pad2(p.d)}-${pad2(p.m)}-${p.y}`;
-    downloadSquarePNG(sq, S, label);
-    setMsg(msg1, "PNG downloaded ✅", "good");
-  });
-
-  btnShare1.addEventListener("click", async () => {
-    const p = parseDateInput(dob.value);
-    if (!p) { setMsg(msg1, "Pick a valid date first.", "bad"); return; }
-    const url = buildShareUrl(p.d, p.m, p.y);
-    const ok = await copyToClipboard(url);
-    setMsg(msg1, ok ? "Share link copied ✅" : "Copy failed ❌", ok ? "good" : "bad");
-  });
-
-  btnClear1.addEventListener("click", () => {
-    dob.value = "";
-    out1.style.display = "none";
-    setMsg(msg1, "", "");
-    lastSq1 = null;
-    lastS1 = null;
-  });
-
-  // ------- Reverse search -------
-  function findDates(S, y) {
-    const a = Math.floor(y / 100);
-    const b = y % 100;
-    const matches = [];
-    for (let m = 1; m <= 12; m++) {
-      const maxD = daysInMonth(m, y);
-      for (let d = 1; d <= maxD; d++) {
-        if (d + m + a + b === S) matches.push({ d, m, y });
-      }
-    }
-    return matches;
-  }
-
-  function showPicked(dmy) {
-    const label = `${pad2(dmy.d)}-${pad2(dmy.m)}-${dmy.y}`;
-    pickedDate.textContent = label;
-
-    const { sq, S, topRow } = buildMagicSquare(dmy.d, dmy.m, dmy.y);
-    renderSquare(sq2, sq);
-    sum2.textContent = S;
-    toprow2.textContent = topRow;
-
-    const v = verifyMagicSquare(sq, S);
-    verify2.textContent = v.detail;
-
-    picked.style.display = "block";
-  }
-
-  btnFind.addEventListener("click", () => {
-    const S = Number(sumIn.value);
-    const y = Number(yearIn.value);
-
-    if (!Number.isFinite(S) || sumIn.value.trim() === "") {
-      setMsg(msg2, "Please enter a valid Magic Sum (number).", "bad");
-      resultBox.style.display = "none";
-      return;
-    }
-    if (!Number.isInteger(y) || y <= 0 || yearIn.value.trim() === "") {
-      setMsg(msg2, "Please enter a valid Year (positive integer).", "bad");
-      resultBox.style.display = "none";
-      return;
-    }
-
-    const matches = findDates(S, y);
-    results.innerHTML = "";
-    picked.style.display = "none";
-    resultBox.style.display = "block";
-    count2.textContent = matches.length;
-
-    if (matches.length === 0) {
-      setMsg(msg2, `No valid birth date found for Magic Sum ${S} in year ${y}.`, "bad");
-      return;
-    }
-
-    setMsg(msg2, `Found ${matches.length} valid date(s). Click one to view its magic square.`, "good");
-
-    for (const dmy of matches) {
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "item";
-      btn.textContent = `${pad2(dmy.d)}-${pad2(dmy.m)}-${dmy.y}`;
-      btn.addEventListener("click", () => {
-        if (autoSquare.checked) showPicked(dmy);
-        else {
-          picked.style.display = "none";
-          setMsg(msg2, `Selected ${btn.textContent}. (Enable auto-generate to show square)`, "good");
+          let reloaded = false;
+          navigator.serviceWorker.addEventListener("controllerchange", () => {
+            if (reloaded) return;
+            reloaded = true;
+            window.location.reload();
+          });
+        } catch {
+          // ignore SW errors
         }
       });
-      results.appendChild(btn);
+    })();
+
+    function showToast(text) {
+      const toast = document.createElement("div");
+      toast.textContent = text;
+      toast.style.position = "fixed";
+      toast.style.bottom = "20px";
+      toast.style.left = "50%";
+      toast.style.transform = "translateX(-50%)";
+      toast.style.background = "#121b2f";
+      toast.style.color = "#e8eeff";
+      toast.style.padding = "10px 16px";
+      toast.style.borderRadius = "10px";
+      toast.style.fontSize = "13px";
+      toast.style.zIndex = "9999";
+      document.body.appendChild(toast);
+
+      setTimeout(() => {
+        toast.remove();
+      }, 2000);
     }
 
-    if (autoSquare.checked) showPicked(matches[0]);
-  });
-
-  btnVerify2.addEventListener("click", () => {
-    const expected = Number(sum2.textContent);
-    if (!Number.isFinite(expected)) { setMsg(msg2, "Select a date first.", "bad"); return; }
-
-    const cells = [...sq2.querySelectorAll("td")].map(td => Number(td.textContent));
-    if (cells.length !== 16 || cells.some(n => !Number.isFinite(n))) {
-      setMsg(msg2, "No square found to verify.", "bad");
-      return;
+    function isLeapYear(y) {
+      if (y % 400 === 0) return true;
+      if (y % 100 === 0) return false;
+      return (y % 4 === 0);
     }
-    const sq = [cells.slice(0,4), cells.slice(4,8), cells.slice(8,12), cells.slice(12,16)];
-    const v = verifyMagicSquare(sq, expected);
-    verify2.textContent = v.detail;
-    setMsg(msg2, v.ok ? "Magic square verified ✅" : "Verification failed ❌", v.ok ? "good" : "bad");
-  });
 
-  btnPng2.addEventListener("click", () => {
-    const label = pickedDate.textContent?.trim();
-    const expected = Number(sum2.textContent);
-    const cells = [...sq2.querySelectorAll("td")].map(td => Number(td.textContent));
-
-    if (!label || !Number.isFinite(expected) || cells.length !== 16) {
-      setMsg(msg2, "Select a date first.", "bad");
-      return;
+    function daysInMonth(m, y) {
+      switch (m) {
+        case 1: return 31;
+        case 2: return isLeapYear(y) ? 29 : 28;
+        case 3: return 31;
+        case 4: return 30;
+        case 5: return 31;
+        case 6: return 30;
+        case 7: return 31;
+        case 8: return 31;
+        case 9: return 30;
+        case 10: return 31;
+        case 11: return 30;
+        case 12: return 31;
+        default: return 0;
+      }
     }
-    const sq = [cells.slice(0,4), cells.slice(4,8), cells.slice(8,12), cells.slice(12,16)];
-    downloadSquarePNG(sq, expected, label);
-    setMsg(msg2, "PNG downloaded ✅", "good");
-  });
 
-  btnShare2.addEventListener("click", async () => {
-    const label = pickedDate.textContent?.trim(); // "DD-MM-YYYY"
-    if (!label) { setMsg(msg2, "Select a date first.", "bad"); return; }
-    const [dd, mm, yy] = label.split("-").map(Number);
-    const url = buildShareUrl(dd, mm, yy);
-    const ok = await copyToClipboard(url);
-    setMsg(msg2, ok ? "Share link copied ✅" : "Copy failed ❌", ok ? "good" : "bad");
-  });
+    function pad2(n) {
+      return String(n).padStart(2, "0");
+    }
 
-  btnClear2.addEventListener("click", () => {
-    sumIn.value = "";
-    yearIn.value = "";
-    results.innerHTML = "";
-    picked.style.display = "none";
-    resultBox.style.display = "none";
-    setMsg(msg2, "", "");
-  });
+    function parseDateInput(iso) {
+      if (!iso || !/^\d{4}-\d{2}-\d{2}$/.test(iso)) return null;
+      const [Y, M, D] = iso.split("-").map(Number);
+      const maxD = daysInMonth(M, Y);
+      if (M < 1 || M > 12) return null;
+      if (D < 1 || D > maxD) return null;
+      return { d: D, m: M, y: Y };
+    }
 
-  // -------- Hydrate from share link query: ?d=4&m=9&y=1998 --------
-  (function hydrateFromQuery() {
-    const q = new URLSearchParams(window.location.search);
-    const d = Number(q.get("d"));
-    const m = Number(q.get("m"));
-    const y = Number(q.get("y"));
-    if (!Number.isInteger(d) || !Number.isInteger(m) || !Number.isInteger(y)) return;
+    function buildMagicSquare(d, m, y) {
+      const a = Math.floor(y / 100);
+      const b = y % 100;
+      const S = d + m + a + b;
 
-    const maxD = daysInMonth(m, y);
-    if (m < 1 || m > 12 || d < 1 || d > maxD) return;
+      const sq = [
+        [d,     m,     a,     b],
+        [b + 1, a - 1, m - 3, d + 3],
+        [m - 2, d + 2, b + 2, a - 2],
+        [a + 1, b - 1, d + 1, m - 1],
+      ];
 
-    // set date input (YYYY-MM-DD)
-    dob.value = `${String(y).padStart(4,"0")}-${pad2(m)}-${pad2(d)}`;
+      return { sq, S, topRow: `${d} + ${m} + ${a} + ${b} = ${S}` };
+    }
 
-    // auto-generate
-    btnGen.click();
-  })();
-  function showToast(text) {
-  const toast = document.createElement("div");
-  toast.textContent = text;
+    function renderSquare(tableEl, sq) {
+      tableEl.innerHTML = "";
+      const tbody = document.createElement("tbody");
+      for (let i = 0; i < 4; i++) {
+        const tr = document.createElement("tr");
+        for (let j = 0; j < 4; j++) {
+          const td = document.createElement("td");
+          td.textContent = sq[i][j];
+          tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+      }
+      tableEl.appendChild(tbody);
+    }
 
-  toast.style.position = "fixed";
-  toast.style.bottom = "20px";
-  toast.style.left = "50%";
-  toast.style.transform = "translateX(-50%)";
-  toast.style.background = "#121b2f";
-  toast.style.color = "#e8eeff";
-  toast.style.padding = "10px 16px";
-  toast.style.borderRadius = "10px";
-  toast.style.fontSize = "13px";
-  toast.style.zIndex = "9999";
+    function setMsg(el, text, kind) {
+      el.textContent = text || "";
+      el.className = "msg " + (kind || "");
+    }
 
-  document.body.appendChild(toast);
+    function verifyMagicSquare(sq, expectedSum) {
+      if (!sq || sq.length !== 4) return { ok: false, detail: "Invalid square" };
 
-  setTimeout(() => {
-    toast.remove();
-  }, 2000);
-}
-  showToast("Link copied!");
-</script>
+      const sums = [];
+
+      for (let r = 0; r < 4; r++) {
+        sums.push(sq[r].reduce((a, v) => a + v, 0));
+      }
+
+      for (let c = 0; c < 4; c++) {
+        let s = 0;
+        for (let r = 0; r < 4; r++) s += sq[r][c];
+        sums.push(s);
+      }
+
+      let d1 = 0, d2 = 0;
+      for (let i = 0; i < 4; i++) {
+        d1 += sq[i][i];
+        d2 += sq[i][3 - i];
+      }
+      sums.push(d1, d2);
+
+      const ok = sums.every(v => v === expectedSum);
+      if (ok) {
+        return { ok: true, detail: `✅ All rows/cols/diagonals = ${expectedSum}` };
+      }
+
+      const bad = sums.filter(v => v !== expectedSum);
+      return { ok: false, detail: `❌ Not magic. Expected ${expectedSum}, mismatches: ${bad.join(", ")}` };
+    }
+
+    function getBaseUrl() {
+      return window.location.origin + window.location.pathname.replace(/\/index\.html$/, "");
+    }
+
+    function buildShareUrl(d, m, y) {
+      const base = getBaseUrl().replace(/\/$/, "");
+      const qs = new URLSearchParams({ d: String(d), m: String(m), y: String(y) });
+      return `${base}/?${qs.toString()}`;
+    }
+
+    async function copyToClipboard(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        return ok;
+      }
+    }
+
+    function roundRect(ctx, x, y, w, h, r, fill, stroke) {
+      const radius = typeof r === "number" ? { tl: r, tr: r, br: r, bl: r } : r;
+      ctx.beginPath();
+      ctx.moveTo(x + radius.tl, y);
+      ctx.lineTo(x + w - radius.tr, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + radius.tr);
+      ctx.lineTo(x + w, y + h - radius.br);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - radius.br, y + h);
+      ctx.lineTo(x + radius.bl, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - radius.bl);
+      ctx.lineTo(x, y + radius.tl);
+      ctx.quadraticCurveTo(x, y, x + radius.tl, y);
+      ctx.closePath();
+      if (fill) ctx.fill();
+      if (stroke) ctx.stroke();
+    }
+
+    function drawSquareToCanvas(ctx, sq, S, title) {
+      const W = ctx.canvas.width;
+      const H = ctx.canvas.height;
+
+      ctx.fillStyle = "#0b1220";
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.fillStyle = "#e8eeff";
+      ctx.font = "700 44px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+      ctx.fillText(title, 60, 90);
+
+      ctx.fillStyle = "#9aa7c2";
+      ctx.font = "500 28px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+      ctx.fillText(`Magic Sum: ${S}`, 60, 135);
+
+      const gridSize = 520;
+      const x0 = 60;
+      const y0 = 180;
+      const cell = gridSize / 4;
+
+      ctx.fillStyle = "rgba(255,255,255,0.06)";
+      roundRect(ctx, x0 - 18, y0 - 18, gridSize + 36, gridSize + 36, 24, true, false);
+
+      ctx.font = "700 44px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      for (let r = 0; r < 4; r++) {
+        for (let c = 0; c < 4; c++) {
+          const x = x0 + c * cell;
+          const y = y0 + r * cell;
+
+          ctx.fillStyle = "rgba(255,255,255,0.08)";
+          roundRect(ctx, x + 10, y + 10, cell - 20, cell - 20, 18, true, false);
+
+          ctx.fillStyle = "#e8eeff";
+          ctx.fillText(String(sq[r][c]), x + cell / 2, y + cell / 2);
+        }
+      }
+
+      ctx.textAlign = "left";
+      ctx.fillStyle = "#6ee7ff";
+      ctx.font = "600 24px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+      ctx.fillText("Ramanujan Magic Square", 60, H - 60);
+
+      ctx.fillStyle = "#9aa7c2";
+      ctx.font = "500 20px system-ui, -apple-system, Segoe UI, Roboto, Arial";
+      ctx.fillText(getBaseUrl(), 60, H - 30);
+    }
+
+    function downloadSquarePNG(sq, S, label) {
+      const canvas = document.createElement("canvas");
+      canvas.width = 1200;
+      canvas.height = 800;
+
+      const ctx = canvas.getContext("2d");
+      drawSquareToCanvas(ctx, sq, S, `Birthday: ${label}`);
+
+      const a = document.createElement("a");
+      a.download = `ramanujan-magic-square-${label}.png`;
+      a.href = canvas.toDataURL("image/png");
+      a.click();
+    }
+
+    const dob = document.getElementById("dob");
+    const btnGen = document.getElementById("btnGen");
+    const btnVerify1 = document.getElementById("btnVerify1");
+    const btnPng1 = document.getElementById("btnPng1");
+    const btnShare1 = document.getElementById("btnShare1");
+    const btnClear1 = document.getElementById("btnClear1");
+    const msg1 = document.getElementById("msg1");
+    const out1 = document.getElementById("out1");
+    const sq1 = document.getElementById("sq1");
+    const sum1 = document.getElementById("sum1");
+    const toprow1 = document.getElementById("toprow1");
+    const verify1 = document.getElementById("verify1");
+
+    const sumIn = document.getElementById("sumIn");
+    const yearIn = document.getElementById("yearIn");
+    const autoSquare = document.getElementById("autoSquare");
+    const btnFind = document.getElementById("btnFind");
+    const btnClear2 = document.getElementById("btnClear2");
+    const msg2 = document.getElementById("msg2");
+    const resultBox = document.getElementById("resultBox");
+    const results = document.getElementById("results");
+    const count2 = document.getElementById("count2");
+    const picked = document.getElementById("picked");
+    const pickedDate = document.getElementById("pickedDate");
+    const sq2 = document.getElementById("sq2");
+    const sum2 = document.getElementById("sum2");
+    const toprow2 = document.getElementById("toprow2");
+    const verify2 = document.getElementById("verify2");
+    const btnVerify2 = document.getElementById("btnVerify2");
+    const btnPng2 = document.getElementById("btnPng2");
+    const btnShare2 = document.getElementById("btnShare2");
+
+    let lastSq1 = null;
+    let lastS1 = null;
+
+    btnGen.addEventListener("click", () => {
+      const p = parseDateInput(dob.value);
+      if (!p) {
+        out1.style.display = "none";
+        setMsg(msg1, "Please pick a valid date.", "bad");
+        return;
+      }
+
+      const { sq, S, topRow } = buildMagicSquare(p.d, p.m, p.y);
+      lastSq1 = sq;
+      lastS1 = S;
+
+      renderSquare(sq1, sq);
+      sum1.textContent = S;
+      toprow1.textContent = topRow;
+
+      const v = verifyMagicSquare(sq, S);
+      verify1.textContent = v.detail;
+
+      out1.style.display = "flex";
+      setMsg(msg1, `Done! Generated square for ${pad2(p.d)}-${pad2(p.m)}-${p.y}.`, "good");
+
+      sumIn.value = S;
+      yearIn.value = p.y;
+    });
+
+    btnVerify1.addEventListener("click", () => {
+      if (!lastSq1 || !Number.isFinite(lastS1)) {
+        setMsg(msg1, "Generate a square first, then verify.", "bad");
+        return;
+      }
+      const v = verifyMagicSquare(lastSq1, lastS1);
+      verify1.textContent = v.detail;
+      setMsg(msg1, v.ok ? "Magic square verified ✅" : "Verification failed ❌", v.ok ? "good" : "bad");
+    });
+
+    btnPng1.addEventListener("click", () => {
+      const p = parseDateInput(dob.value);
+      if (!p) {
+        setMsg(msg1, "Pick a valid date first.", "bad");
+        return;
+      }
+      const { sq, S } = buildMagicSquare(p.d, p.m, p.y);
+      const label = `${pad2(p.d)}-${pad2(p.m)}-${p.y}`;
+      downloadSquarePNG(sq, S, label);
+      setMsg(msg1, "PNG downloaded ✅", "good");
+      showToast("PNG downloaded!");
+    });
+
+    btnShare1.addEventListener("click", async () => {
+      const p = parseDateInput(dob.value);
+      if (!p) {
+        setMsg(msg1, "Pick a valid date first.", "bad");
+        return;
+      }
+      const url = buildShareUrl(p.d, p.m, p.y);
+      const ok = await copyToClipboard(url);
+      setMsg(msg1, ok ? "Share link copied ✅" : "Copy failed ❌", ok ? "good" : "bad");
+      if (ok) showToast("Link copied!");
+    });
+
+    btnClear1.addEventListener("click", () => {
+      dob.value = "";
+      out1.style.display = "none";
+      setMsg(msg1, "", "");
+      lastSq1 = null;
+      lastS1 = null;
+    });
+
+    function findDates(S, y) {
+      const a = Math.floor(y / 100);
+      const b = y % 100;
+      const matches = [];
+      for (let m = 1; m <= 12; m++) {
+        const maxD = daysInMonth(m, y);
+        for (let d = 1; d <= maxD; d++) {
+          if (d + m + a + b === S) matches.push({ d, m, y });
+        }
+      }
+      return matches;
+    }
+
+    function showPicked(dmy) {
+      const label = `${pad2(dmy.d)}-${pad2(dmy.m)}-${dmy.y}`;
+      pickedDate.textContent = label;
+
+      const { sq, S, topRow } = buildMagicSquare(dmy.d, dmy.m, dmy.y);
+      renderSquare(sq2, sq);
+      sum2.textContent = S;
+      toprow2.textContent = topRow;
+
+      const v = verifyMagicSquare(sq, S);
+      verify2.textContent = v.detail;
+
+      picked.style.display = "block";
+    }
+
+    btnFind.addEventListener("click", () => {
+      const S = Number(sumIn.value);
+      const y = Number(yearIn.value);
+
+      if (!Number.isFinite(S) || sumIn.value.trim() === "") {
+        setMsg(msg2, "Please enter a valid Magic Sum (number).", "bad");
+        resultBox.style.display = "none";
+        return;
+      }
+
+      if (!Number.isInteger(y) || y <= 0 || yearIn.value.trim() === "") {
+        setMsg(msg2, "Please enter a valid Year (positive integer).", "bad");
+        resultBox.style.display = "none";
+        return;
+      }
+
+      const matches = findDates(S, y);
+      results.innerHTML = "";
+      picked.style.display = "none";
+      resultBox.style.display = "block";
+      count2.textContent = matches.length;
+
+      if (matches.length === 0) {
+        setMsg(msg2, `No valid birth date found for Magic Sum ${S} in year ${y}.`, "bad");
+        return;
+      }
+
+      setMsg(msg2, `Found ${matches.length} valid date(s). Click one to view its magic square.`, "good");
+
+      for (const dmy of matches) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "item";
+        btn.textContent = `${pad2(dmy.d)}-${pad2(dmy.m)}-${dmy.y}`;
+        btn.addEventListener("click", () => {
+          if (autoSquare.checked) {
+            showPicked(dmy);
+          } else {
+            picked.style.display = "none";
+            setMsg(msg2, `Selected ${btn.textContent}. (Enable auto-generate to show square)`, "good");
+          }
+        });
+        results.appendChild(btn);
+      }
+
+      if (autoSquare.checked) showPicked(matches[0]);
+    });
+
+    btnVerify2.addEventListener("click", () => {
+      const expected = Number(sum2.textContent);
+      if (!Number.isFinite(expected)) {
+        setMsg(msg2, "Select a date first.", "bad");
+        return;
+      }
+
+      const cells = [...sq2.querySelectorAll("td")].map(td => Number(td.textContent));
+      if (cells.length !== 16 || cells.some(n => !Number.isFinite(n))) {
+        setMsg(msg2, "No square found to verify.", "bad");
+        return;
+      }
+
+      const sq = [
+        cells.slice(0, 4),
+        cells.slice(4, 8),
+        cells.slice(8, 12),
+        cells.slice(12, 16)
+      ];
+
+      const v = verifyMagicSquare(sq, expected);
+      verify2.textContent = v.detail;
+      setMsg(msg2, v.ok ? "Magic square verified ✅" : "Verification failed ❌", v.ok ? "good" : "bad");
+    });
+
+    btnPng2.addEventListener("click", () => {
+      const label = pickedDate.textContent?.trim();
+      const expected = Number(sum2.textContent);
+      const cells = [...sq2.querySelectorAll("td")].map(td => Number(td.textContent));
+
+      if (!label || !Number.isFinite(expected) || cells.length !== 16) {
+        setMsg(msg2, "Select a date first.", "bad");
+        return;
+      }
+
+      const sq = [
+        cells.slice(0, 4),
+        cells.slice(4, 8),
+        cells.slice(8, 12),
+        cells.slice(12, 16)
+      ];
+
+      downloadSquarePNG(sq, expected, label);
+      setMsg(msg2, "PNG downloaded ✅", "good");
+      showToast("PNG downloaded!");
+    });
+
+    btnShare2.addEventListener("click", async () => {
+      const label = pickedDate.textContent?.trim();
+      if (!label) {
+        setMsg(msg2, "Select a date first.", "bad");
+        return;
+      }
+
+      const [dd, mm, yy] = label.split("-").map(Number);
+      const url = buildShareUrl(dd, mm, yy);
+      const ok = await copyToClipboard(url);
+      setMsg(msg2, ok ? "Share link copied ✅" : "Copy failed ❌", ok ? "good" : "bad");
+      if (ok) showToast("Link copied!");
+    });
+
+    btnClear2.addEventListener("click", () => {
+      sumIn.value = "";
+      yearIn.value = "";
+      results.innerHTML = "";
+      picked.style.display = "none";
+      resultBox.style.display = "none";
+      setMsg(msg2, "", "");
+    });
+
+    (function hydrateFromQuery() {
+      const q = new URLSearchParams(window.location.search);
+      const d = Number(q.get("d"));
+      const m = Number(q.get("m"));
+      const y = Number(q.get("y"));
+
+      if (!Number.isInteger(d) || !Number.isInteger(m) || !Number.isInteger(y)) return;
+
+      const maxD = daysInMonth(m, y);
+      if (m < 1 || m > 12 || d < 1 || d > maxD) return;
+
+      dob.value = `${String(y).padStart(4, "0")}-${pad2(m)}-${pad2(d)}`;
+      btnGen.click();
+    })();
+  </script>
 </body>
 </html>
