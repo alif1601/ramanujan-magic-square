@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark" />
   <meta name="theme-color" content="#0b1220" />
-
+  <link rel="preload" as="image" href="./assets/og-image.png">
   <title>Ramanujan Magic Square Generator – Birthday 4×4 Magic Square Calculator</title>
   <meta name="description" content="Generate a Ramanujan-style 4x4 birthday magic square instantly. Calculate magic sum, reverse-search birth dates, download PNG and share your personalised magic square." />
   <meta name="description" content="Generate Ramanujan-style 4×4 birthday magic squares. Reverse-search birth dates from Magic Sum + Year with leap-year accurate validation. Download PNG and share links." />
@@ -155,6 +155,28 @@
     "description": "Generate Ramanujan-style 4×4 birthday magic squares and reverse-search dates from Magic Sum + Year."
   }
   </script>
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [{
+   "@type": "Question",
+   "name": "What is a Ramanujan magic square?",
+   "acceptedAnswer": {
+     "@type": "Answer",
+     "text": "A Ramanujan magic square is a 4x4 grid where each row, column and diagonal sums to the same number."
+   }
+ }]
+}
+</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-XXXXXXXX');
+</script>
 </head>
 
 <body>
@@ -281,7 +303,25 @@
         </div>
       </section>
     </div>
+<section style="margin-top:40px; font-size:14px; line-height:1.6;">
+<h2>What is a Ramanujan Magic Square?</h2>
 
+<p>
+A Ramanujan magic square is a special 4×4 grid where the sum of each row,
+column, and diagonal equals the same number called the magic sum.
+This tool generates a personalised Ramanujan-style magic square
+based on your birth date.
+</p>
+
+<h2>How does the Birthday Magic Square work?</h2>
+
+<p>
+The magic sum is calculated from the day, month and year digits of
+your birth date. Using a special construction pattern inspired by
+Srinivasa Ramanujan, the tool builds a 4×4 square where every row,
+column and diagonal produces the same total.
+</p>
+</section>
     <footer>
       Quick test: <code class="kbd">04-09-1998</code> ⇒ sum <code class="kbd">130</code>.
       <span style="margin-left:10px;">•</span>
@@ -803,6 +843,28 @@
     // auto-generate
     btnGen.click();
   })();
+  function showToast(text) {
+  const toast = document.createElement("div");
+  toast.textContent = text;
+
+  toast.style.position = "fixed";
+  toast.style.bottom = "20px";
+  toast.style.left = "50%";
+  toast.style.transform = "translateX(-50%)";
+  toast.style.background = "#121b2f";
+  toast.style.color = "#e8eeff";
+  toast.style.padding = "10px 16px";
+  toast.style.borderRadius = "10px";
+  toast.style.fontSize = "13px";
+  toast.style.zIndex = "9999";
+
+  document.body.appendChild(toast);
+
+  setTimeout(() => {
+    toast.remove();
+  }, 2000);
+}
+  showToast("Link copied!");
 </script>
 </body>
 </html>
