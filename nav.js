@@ -1,30 +1,22 @@
-function buildNav() {
-  if (document.querySelector(".top-nav")) return;
-
-  const nav = document.createElement("nav");
-  nav.className = "top-nav";
-  nav.innerHTML = `
-    <div class="top-nav-inner">
-      <a class="top-nav-brand" href="./index.html">🎩 Ramanujan Magic Square</a>
-      <div class="top-nav-links">
-        <a class="top-nav-link ${currentPath.endsWith('/index.html') || currentPath.endsWith('/ramanujan-magic-square/') ? 'active' : ''}" href="./index.html">Home</a>
-        <a class="top-nav-link ${currentPath.endsWith('/about.html') ? 'active' : ''}" href="./about.html">About</a>
-        <a class="top-nav-link ${currentPath.endsWith('/developer.html') ? 'active' : ''}" href="./developer.html">Developer</a>
-      </div>
-    </div>
-  `;
-  document.body.prepend(nav);
-}
 (function () {
   const currentPath = window.location.pathname;
 
   function buildNav() {
+    if (document.querySelector(".top-nav")) return;
+
     const nav = document.createElement("nav");
     nav.className = "top-nav";
     nav.innerHTML = `
       <div class="top-nav-inner">
         <a class="top-nav-brand" href="./index.html">🎩 Ramanujan Magic Square</a>
-        <div class="top-nav-links">
+
+        <button class="top-nav-toggle" id="topNavToggle" type="button" aria-label="Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="top-nav-links" id="topNavLinks">
           <a class="top-nav-link ${currentPath.endsWith('/index.html') || currentPath.endsWith('/ramanujan-magic-square/') ? 'active' : ''}" href="./index.html">Home</a>
           <a class="top-nav-link ${currentPath.endsWith('/about.html') ? 'active' : ''}" href="./about.html">About</a>
           <a class="top-nav-link ${currentPath.endsWith('/developer.html') ? 'active' : ''}" href="./developer.html">Developer</a>
@@ -32,9 +24,28 @@ function buildNav() {
       </div>
     `;
     document.body.prepend(nav);
+
+    const toggle = nav.querySelector("#topNavToggle");
+    const links = nav.querySelector("#topNavLinks");
+
+    toggle?.addEventListener("click", () => {
+      const isOpen = links.classList.toggle("open");
+      toggle.classList.toggle("open", isOpen);
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 40) {
+        nav.classList.add("scrolled");
+      } else {
+        nav.classList.remove("scrolled");
+      }
+    });
   }
 
   function buildFloatingShare() {
+    if (document.querySelector(".floating-share")) return;
+
     const wrap = document.createElement("div");
     wrap.className = "floating-share";
     wrap.innerHTML = `
