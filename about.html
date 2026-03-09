@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#0b1220" />
+
+  <title>About Ramanujan & Developer | Ramanujan Magic Square</title>
+  <meta name="description" content="Learn about Srinivasa Ramanujan, the developer, and share the Ramanujan Magic Square Generator on Facebook, LinkedIn, Instagram, X, YouTube, and WhatsApp." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://alif1601.github.io/ramanujan-magic-square/about.html" />
+
+  <meta property="og:title" content="About Ramanujan & Developer" />
+  <meta property="og:description" content="About Srinivasa Ramanujan, developer info, and social sharing for the Ramanujan Magic Square Generator." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://alif1601.github.io/ramanujan-magic-square/about.html" />
+  <meta property="og:image" content="https://alif1601.github.io/ramanujan-magic-square/assets/og-image.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About Ramanujan & Developer" />
+  <meta name="twitter:description" content="About Srinivasa Ramanujan, developer info, and social sharing for the Ramanujan Magic Square Generator." />
+  <meta name="twitter:image" content="https://alif1601.github.io/ramanujan-magic-square/assets/og-image.png" />
+
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
+
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self';
+                 img-src 'self' data: https:;
+                 style-src 'self' 'unsafe-inline';
+                 script-src 'self' 'unsafe-inline';
+                 object-src 'none';
+                 base-uri 'self';
+                 frame-ancestors 'none';" />
+
+  <style>
+    :root {
+      --bg:#0b1220;
+      --card:#121b2f;
+      --card-2:#17233d;
+      --muted:#9aa7c2;
+      --text:#e8eeff;
+      --accent:#6ee7ff;
+      --accent-2:#8b5cf6;
+      --line:rgba(255,255,255,.10);
+      --shadow:0 14px 36px rgba(0,0,0,.28);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(18,34,74,.9) 0%, transparent 55%),
+        radial-gradient(900px 500px at 85% 15%, rgba(43,18,89,.55) 0%, transparent 50%),
+        linear-gradient(180deg, #0b1220 0%, #0a1020 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .bg-orb {
+      position: fixed;
+      inset: auto;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: .18;
+      pointer-events: none;
+      z-index: 0;
+      animation: floatOrb 10s ease-in-out infinite;
+    }
+
+    .orb-1 {
+      top: 70px;
+      left: -80px;
+      background: var(--accent);
+    }
+
+    .orb-2 {
+      right: -100px;
+      top: 220px;
+      background: var(--accent-2);
+      animation-delay: -3s;
+    }
+
+    @keyframes floatOrb {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-18px) translateX(10px); }
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+      animation: fadeUp .7s ease both;
+    }
+
+    .brand {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      margin: 0;
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      margin-top: 8px;
+      max-width: 760px;
+    }
+
+    .glass-btn,
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 150px;
+      padding: 11px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,.14),
+        rgba(255,255,255,.06)
+      );
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow:
+        0 10px 24px rgba(0,0,0,.20),
+        inset 0 1px 0 rgba(255,255,255,.12);
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
+      cursor: pointer;
+    }
+
+    .glass-btn:hover,
+    .social-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      border-color: rgba(110,231,255,.42);
+      background: linear-gradient(
+        180deg,
+        rgba(110,231,255,.18),
+        rgba(110,231,255,.08)
+      );
+      box-shadow:
+        0 14px 28px rgba(0,0,0,.28),
+        0 0 0 1px rgba(110,231,255,.06),
+        inset 0 1px 0 rgba(255,255,255,.16);
+    }
+
+    .glass-btn:active,
+    .social-btn:active {
+      transform: translateY(1px) scale(.99);
+    }
+
+    .hero {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1.2fr .8fr;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,.06),
+        rgba(255,255,255,.025)
+      );
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      animation: fadeUp .7s ease both;
+    }
+
+    .card:nth-child(2) { animation-delay: .08s; }
+    .card:nth-child(3) { animation-delay: .14s; }
+    .card:nth-child(4) { animation-delay: .20s; }
+
+    .hero-title {
+      font-size: 30px;
+      line-height: 1.2;
+      margin: 0 0 12px;
+    }
+
+    .hero-text,
+    .card p {
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 15px;
+      margin: 0 0 12px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .profile-card {
+      text-align: center;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
+        radial-gradient(circle at top, rgba(110,231,255,.14), transparent 60%);
+    }
+
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      display: grid;
+      place-items: center;
+      font-size: 34px;
+      font-weight: 800;
+      color: white;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow:
+        0 12px 28px rgba(0,0,0,.28),
+        0 0 0 6px rgba(255,255,255,.04);
+      animation: pulseSoft 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseSoft {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    .name {
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .role {
+      color: var(--muted);
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin: 0 0 14px;
+    }
+
+    .grid-2 {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .social-btn {
+      min-width: 160px;
+    }
+
+    .back-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+      animation: fadeUp .7s ease both;
+      animation-delay: .28s;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #121b2f;
+      color: #e8eeff;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      z-index: 9999;
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 10px 24px rgba(0,0,0,.28);
+      animation: fadeUp .25s ease;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About Ramanujan & Developer",
+    "url": "https://alif1601.github.io/ramanujan-magic-square/about.html",
+    "description": "About Srinivasa Ramanujan, the developer, and sharing options for the Ramanujan Magic Square Generator."
+  }
+  </script>
+</head>
+<body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+
+  <div class="wrap">
+    <div class="topbar">
+      <div>
+        <h1 class="brand">🎩 About Ramanujan & Developer</h1>
+        <div class="sub">
+          A dedicated page about Srinivasa Ramanujan, the inspiration behind this project,
+          along with the developer’s social links and easy project sharing options.
+        </div>
+      </div>
+      <a class="glass-btn" href="./index.html">← Back to Home</a>
+    </div>
+
+    <div class="hero">
+      <section class="card">
+        <h2 class="hero-title">About Srinivasa Ramanujan</h2>
+        <p class="hero-text">
+          Srinivasa Ramanujan was one of the greatest mathematicians in history.
+          He is celebrated for his deep intuition in number theory, infinite series,
+          partitions, continued fractions, and remarkable mathematical identities.
+        </p>
+        <p class="hero-text">
+          One of the most famous mathematical curiosities associated with him is the
+          <b>Ramanujan magic square</b>, often linked to his birth date:
+          <b>22 December 1887</b>.
+        </p>
+        <p class="hero-text">
+          Inspired by that beautiful idea, this project creates a personalized
+          birthday-based 4×4 magic square using a user’s birth date and also
+          supports reverse search, PNG export, and shareable links.
+        </p>
+
+        <div class="pill-row">
+          <div class="pill">Number Theory</div>
+          <div class="pill">Mathematical Curiosity</div>
+          <div class="pill">Birthday Magic Square</div>
+        </div>
+      </section>
+
+      <aside class="card profile-card">
+        <div class="avatar">AR</div>
+        <h2 class="name">Alif Rabbi</h2>
+        <div class="role">
+          Developer of the Ramanujan Magic Square Generator<br />
+          Web app builder • math-inspired projects • creative web tools
+        </div>
+
+        <div class="pill-row" style="justify-content:center; margin-top:16px;">
+          <div class="pill">Version: v1.0.0</div>
+          <div class="pill">PWA Enabled</div>
+          <div class="pill">SEO Ready</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="grid-2">
+      <section class="card">
+        <h2 class="section-title">Project Sharing</h2>
+        <p class="muted">
+          Share this project directly on your favorite platforms.
+        </p>
+
+        <div class="btn-row">
+          <button class="social-btn" id="btnFbShare" type="button">Facebook</button>
+          <button class="social-btn" id="btnLinkedInShare" type="button">LinkedIn</button>
+          <button class="social-btn" id="btnWhatsAppShare" type="button">WhatsApp</button>
+          <button class="social-btn" id="btnCopyProjectLink" type="button">Copy Link</button>
+        </div>
+
+        <div class="pill-row">
+          <div class="pill">Live URL: alif1601.github.io/ramanujan-magic-square</div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 class="section-title">Developer Social Links</h2>
+        <p class="muted">
+          Connect with the developer and follow for more projects.
+        </p>
+
+        <div class="btn-row">
+          <a class="social-btn" href="https://www.facebook.com/alifrabbi.rayhan" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a class="social-btn" href="https://www.linkedin.com/in/alif-rabbi675/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="social-btn" href="https://www.instagram.com/alif_rabbi_/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="social-btn" href="https://x.com/MdAlifRabbi1" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
+          <a class="social-btn" href="https://www.youtube.com/@alif_rabbi" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a class="social-btn" href="https://wa.me/8801780640675" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+
+        <div class="pill-row">
+          <div class="pill">WhatsApp: +880 1780-640675</div>
+        </div>
+      </section>
+    </div>
+
+    <section class="card" style="margin-top:18px;">
+      <h2 class="section-title">Why this project matters</h2>
+      <p>
+        This project combines mathematics, creativity, and web development into a
+        simple but memorable user experience. It allows users to generate a personalized
+        Ramanujan-style birthday magic square, verify it, export it as PNG, and share it.
+      </p>
+      <p>
+        It also serves as a portfolio-quality example of a modern static web app with
+        PWA support, SEO optimization, analytics, share links, and a polished UI.
+      </p>
+
+      <div class="back-row">
+        <a class="glass-btn" href="./index.html">Go to Main Generator</a>
+      </div>
+    </section>
+
+    <footer>
+      Built with inspiration from Ramanujan and crafted by Alif Rabbi.
+    </footer>
+  </div>
+
+  <script>
+    const projectUrl = "https://alif1601.github.io/ramanujan-magic-square/";
+    const projectTitle = "Ramanujan Magic Square Generator";
+    const projectText = "Generate a Ramanujan-style birthday magic square instantly.";
+
+    function openShareUrl(url) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function showToast(text) {
+      const toast = document.createElement("div");
+      toast.className = "toast";
+      toast.textContent = text;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 2000);
+    }
+
+    async function copyToClipboard(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        const ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        return ok;
+      }
+    }
+
+    document.getElementById("btnFbShare")?.addEventListener("click", () => {
+      const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(projectUrl)}`;
+      openShareUrl(url);
+    });
+
+    document.getElementById("btnLinkedInShare")?.addEventListener("click", () => {
+      const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(projectUrl)}`;
+      openShareUrl(url);
+    });
+
+    document.getElementById("btnWhatsAppShare")?.addEventListener("click", () => {
+      const text = `${projectTitle} - ${projectText} ${projectUrl}`;
+      const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+      openShareUrl(url);
+    });
+
+    document.getElementById("btnCopyProjectLink")?.addEventListener("click", async () => {
+      const ok = await copyToClipboard(projectUrl);
+      showToast(ok ? "Project link copied!" : "Copy failed!");
+    });
+  </script>
+</body>
+</html>
