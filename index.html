@@ -325,6 +325,188 @@
     0 0 0 4px rgba(110, 231, 255, 0.16),
     0 10px 24px rgba(0, 0, 0, 0.24);
 }
+
+.hero-banner {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+@media (max-width: 860px) {
+  .hero-banner {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero-copy,
+.hero-panel {
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.22);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.05);
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.hero-title {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.hero-title span {
+  color: var(--accent);
+}
+
+.hero-text {
+  margin-top: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: 14px;
+  max-width: 58ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: .18s ease;
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+.hero-btn.primary {
+  color: var(--text);
+  background: linear-gradient(180deg, rgba(110,231,255,.20), rgba(110,231,255,.10));
+  border-color: rgba(110,231,255,.35);
+}
+
+.hero-btn.primary:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(180deg, rgba(110,231,255,.26), rgba(110,231,255,.12));
+}
+
+.hero-btn.secondary {
+  color: var(--text);
+  background: rgba(255,255,255,.05);
+}
+
+.hero-btn.secondary:hover {
+  transform: translateY(-1px);
+  border-color: rgba(110,231,255,.35);
+  background: rgba(110,231,255,.08);
+}
+
+.hero-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mini-square {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.mini-square div {
+  text-align: center;
+  padding: 14px 8px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.10);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.hero-note {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.pro-footer {
+  margin-top: 28px;
+  padding: 18px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,.08);
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+}
+
+.pro-footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-brand {
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.footer-text {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 54ch;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.footer-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+.pro-footer-bottom {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.08);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 12px;
+}
   </style>
 
 <script type="application/ld+json">
@@ -337,6 +519,7 @@
   "url": "https://alif1601.github.io/ramanujan-magic-square/",
   "description": "Generate Ramanujan-style 4x4 birthday magic squares and reverse-search dates from Magic Sum and Year."
 }
+  
 </script>
 
 <script type="application/ld+json">
