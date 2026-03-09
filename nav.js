@@ -1,3 +1,20 @@
+function buildNav() {
+  if (document.querySelector(".top-nav")) return;
+
+  const nav = document.createElement("nav");
+  nav.className = "top-nav";
+  nav.innerHTML = `
+    <div class="top-nav-inner">
+      <a class="top-nav-brand" href="./index.html">🎩 Ramanujan Magic Square</a>
+      <div class="top-nav-links">
+        <a class="top-nav-link ${currentPath.endsWith('/index.html') || currentPath.endsWith('/ramanujan-magic-square/') ? 'active' : ''}" href="./index.html">Home</a>
+        <a class="top-nav-link ${currentPath.endsWith('/about.html') ? 'active' : ''}" href="./about.html">About</a>
+        <a class="top-nav-link ${currentPath.endsWith('/developer.html') ? 'active' : ''}" href="./developer.html">Developer</a>
+      </div>
+    </div>
+  `;
+  document.body.prepend(nav);
+}
 (function () {
   const currentPath = window.location.pathname;
 
