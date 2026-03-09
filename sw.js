@@ -1,5 +1,5 @@
 /* sw.js — safe production PWA cache with update flow */
-const CACHE_VERSION = "v5";
+const CACHE_VERSION = "v6";
 const CACHE_NAME = `ramanujan-magic-square-${CACHE_VERSION}`;
 
 const ASSETS = [
