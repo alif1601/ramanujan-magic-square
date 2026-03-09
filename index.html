@@ -1,8 +1,6 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8" />
   <meta name="google-site-verification" content="lwmIH0COVe7Sf23P18kkecGNqi7TehryeBCQibFoxdU" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -12,38 +10,49 @@
   <link rel="preload" as="image" href="./assets/og-image.png" />
 
   <title>Ramanujan Magic Square Generator – Birthday 4×4 Magic Square Calculator</title>
-  <meta name="description"
-    content="Generate a Ramanujan-style 4x4 birthday magic square instantly. Calculate magic sum, reverse-search birth dates, download PNG, and share your personalized magic square." />
+  <meta
+    name="description"
+    content="Generate a Ramanujan-style 4x4 birthday magic square instantly. Calculate magic sum, reverse-search birth dates, download PNG, and share your personalized magic square."
+  />
   <meta name="robots" content="index,follow" />
 
   <link rel="canonical" href="https://alif1601.github.io/ramanujan-magic-square/" />
 
   <meta property="og:title" content="Ramanujan Magic Square Generator (Birthday Calculator)" />
-  <meta property="og:description"
-    content="Generate a Ramanujan-style birthday magic square instantly. Enter your birth date to create a 4×4 magic square, download PNG, and share your personalized result." />
+  <meta
+    property="og:description"
+    content="Generate a Ramanujan-style birthday magic square instantly. Enter your birth date to create a 4×4 magic square, download PNG, and share your personalized result."
+  />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://alif1601.github.io/ramanujan-magic-square/" />
   <meta property="og:image" content="https://alif1601.github.io/ramanujan-magic-square/assets/og-image.png" />
 
-
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Ramanujan Magic Square Generator – Birthday 4×4 Magic Square Calculator" />
-  <meta name="twitter:description"
-    content="Generate a Ramanujan-style 4×4 birthday magic square instantly. Download PNG and share links." />
+  <meta
+    name="twitter:description"
+    content="Generate a Ramanujan-style 4×4 birthday magic square instantly. Download PNG and share links."
+  />
   <meta name="twitter:image" content="https://alif1601.github.io/ramanujan-magic-square/assets/og-image.png" />
 
   <link rel="manifest" href="./site.webmanifest" />
   <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
 
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self';
-               img-src 'self' data: https:;
-               style-src 'self' 'unsafe-inline';
-               script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com;
-               connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
-               object-src 'none';
-               base-uri 'self';
-               frame-ancestors 'none';" />
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self';
+             img-src 'self' data: https:;
+             style-src 'self' 'unsafe-inline';
+             script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com;
+             connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
+             object-src 'none';
+             base-uri 'self';
+             frame-ancestors 'none';"
+  />
+
+  <link rel="stylesheet" href="./nav.css" />
+  <script defer src="./nav.js"></script>
 
   <style>
     :root {
@@ -52,7 +61,7 @@
       --muted: #9aa7c2;
       --text: #e8eeff;
       --accent: #6ee7ff;
-      --good: #7CFF9A;
+      --good: #7cff9a;
       --bad: #ff7c7c;
     }
 
@@ -87,7 +96,7 @@
     h1 {
       margin: 0;
       font-size: 20px;
-      letter-spacing: .2px;
+      letter-spacing: 0.2px;
     }
 
     .sub {
@@ -111,11 +120,11 @@
     }
 
     .card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
-      border: 1px solid rgba(255, 255, 255, .08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 16px;
       padding: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     }
 
     .card h2 {
@@ -133,9 +142,9 @@
     input,
     button {
       width: 100%;
-      background: rgba(255, 255, 255, .06);
+      background: rgba(255, 255, 255, 0.06);
       color: var(--text);
-      border: 1px solid rgba(255, 255, 255, .14);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 12px;
       padding: 10px 12px;
       outline: none;
@@ -143,15 +152,15 @@
     }
 
     input:focus {
-      border-color: rgba(110, 231, 255, .55);
-      box-shadow: 0 0 0 3px rgba(110, 231, 255, .16);
+      border-color: rgba(110, 231, 255, 0.55);
+      box-shadow: 0 0 0 3px rgba(110, 231, 255, 0.16);
     }
 
     button {
       cursor: pointer;
-      background: linear-gradient(180deg, rgba(110, 231, 255, .20), rgba(110, 231, 255, .10));
-      border-color: rgba(110, 231, 255, .35);
-      transition: transform .05s ease;
+      background: linear-gradient(180deg, rgba(110, 231, 255, 0.2), rgba(110, 231, 255, 0.1));
+      border-color: rgba(110, 231, 255, 0.35);
+      transition: transform 0.05s ease;
       font-weight: 700;
     }
 
@@ -201,10 +210,10 @@
     table.square {
       border-collapse: separate;
       border-spacing: 8px;
-      background: rgba(0, 0, 0, .18);
+      background: rgba(0, 0, 0, 0.18);
       padding: 10px;
       border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       min-width: 260px;
     }
 
@@ -212,8 +221,8 @@
       text-align: center;
       padding: 10px 8px;
       min-width: 54px;
-      background: rgba(255, 255, 255, .06);
-      border: 1px solid rgba(255, 255, 255, .10);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 12px;
       font-variant-numeric: tabular-nums;
       font-weight: 750;
@@ -225,8 +234,8 @@
       gap: 8px;
       padding: 8px 10px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, .10);
-      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
       font-size: 12px;
       color: var(--muted);
       margin-top: 8px;
@@ -245,15 +254,15 @@
       max-height: 260px;
       overflow: auto;
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, .10);
-      background: rgba(0, 0, 0, .18);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.18);
     }
 
     .results button.item {
       width: 100%;
       text-align: left;
       border: 0;
-      border-bottom: 1px solid rgba(255, 255, 255, .08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 0;
       background: transparent;
       padding: 10px 12px;
@@ -261,7 +270,7 @@
     }
 
     .results button.item:hover {
-      background: rgba(255, 255, 255, .05);
+      background: rgba(255, 255, 255, 0.05);
     }
 
     .results button.item:last-child {
@@ -277,8 +286,8 @@
     code.kbd {
       padding: 2px 6px;
       border-radius: 8px;
-      background: rgba(255, 255, 255, .06);
-      border: 1px solid rgba(255, 255, 255, .10);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     a {
@@ -306,9 +315,7 @@
       padding: 10px 16px;
       border-radius: 12px;
       border: 1px solid rgba(255, 255, 255, 0.16);
-      background: linear-gradient(180deg,
-          rgba(255, 255, 255, 0.16),
-          rgba(255, 255, 255, 0.08));
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
       color: #e8eeff;
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
@@ -323,9 +330,7 @@
     }
 
     .update-btn:hover {
-      background: linear-gradient(180deg,
-          rgba(110, 231, 255, 0.26),
-          rgba(110, 231, 255, 0.12));
+      background: linear-gradient(180deg, rgba(110, 231, 255, 0.26), rgba(110, 231, 255, 0.12));
       border-color: rgba(110, 231, 255, 0.48);
       box-shadow:
         0 12px 28px rgba(0, 0, 0, 0.28),
@@ -352,7 +357,7 @@
     .hero-banner {
       margin-top: 18px;
       display: grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 16px;
       align-items: stretch;
     }
@@ -365,11 +370,11 @@
 
     .hero-copy,
     .hero-panel {
-      background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .02));
-      border: 1px solid rgba(255, 255, 255, .08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 18px;
       padding: 18px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .22);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
     }
 
     .hero-badge {
@@ -378,8 +383,8 @@
       gap: 8px;
       padding: 7px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, .10);
-      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
       color: var(--muted);
       font-size: 12px;
       margin-bottom: 12px;
@@ -418,30 +423,31 @@
       padding: 10px 14px;
       border-radius: 12px;
       font-weight: 700;
-      transition: .18s ease;
-      border: 1px solid rgba(255, 255, 255, .12);
+      transition: 0.18s ease;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      cursor: pointer;
     }
 
     .hero-btn.primary {
       color: var(--text);
-      background: linear-gradient(180deg, rgba(110, 231, 255, .20), rgba(110, 231, 255, .10));
-      border-color: rgba(110, 231, 255, .35);
+      background: linear-gradient(180deg, rgba(110, 231, 255, 0.2), rgba(110, 231, 255, 0.1));
+      border-color: rgba(110, 231, 255, 0.35);
     }
 
     .hero-btn.primary:hover {
       transform: translateY(-1px);
-      background: linear-gradient(180deg, rgba(110, 231, 255, .26), rgba(110, 231, 255, .12));
+      background: linear-gradient(180deg, rgba(110, 231, 255, 0.26), rgba(110, 231, 255, 0.12));
     }
 
     .hero-btn.secondary {
       color: var(--text);
-      background: rgba(255, 255, 255, .05);
+      background: rgba(255, 255, 255, 0.05);
     }
 
     .hero-btn.secondary:hover {
       transform: translateY(-1px);
-      border-color: rgba(110, 231, 255, .35);
-      background: rgba(110, 231, 255, .08);
+      border-color: rgba(110, 231, 255, 0.35);
+      background: rgba(110, 231, 255, 0.08);
     }
 
     .hero-panel {
@@ -460,8 +466,8 @@
       text-align: center;
       padding: 14px 8px;
       border-radius: 14px;
-      background: rgba(255, 255, 255, .06);
-      border: 1px solid rgba(255, 255, 255, .10);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       font-weight: 800;
       font-variant-numeric: tabular-nums;
     }
@@ -477,9 +483,9 @@
       margin-top: 28px;
       padding: 18px;
       border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, .08);
-      background: linear-gradient(180deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .02));
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .18);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
     }
 
     .pro-footer-top {
@@ -522,7 +528,7 @@
     .pro-footer-bottom {
       margin-top: 14px;
       padding-top: 14px;
-      border-top: 1px solid rgba(255, 255, 255, .08);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       justify-content: space-between;
       gap: 12px;
@@ -542,8 +548,7 @@
   "url": "https://alif1601.github.io/ramanujan-magic-square/",
   "description": "Generate Ramanujan-style 4x4 birthday magic squares and reverse-search dates from Magic Sum and Year."
 }
-  
-</script>
+  </script>
 
   <script type="application/ld+json">
 {
@@ -576,45 +581,40 @@
     }
   ]
 }
-</script>
+  </script>
 
-
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-GKW99BFEE0"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-GKW99BFEE0');
+    gtag("js", new Date());
+    gtag("config", "G-GKW99BFEE0");
   </script>
-  <link rel="stylesheet" href="./nav.css" />
-  <script defer src="./nav.js"></script>
 </head>
 
 <body>
   <div id="updateBanner" style="
-  display:none;
-  position: fixed;
-  left: 14px;
-  right: 14px;
-  bottom: 14px;
-  z-index: 9999;
-  background: linear-gradient(
-    180deg,
-    rgba(18,27,47,0.82),
-    rgba(18,27,47,0.68)
-  );
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255,255,255,.12);
-  border-radius: 16px;
-  padding: 14px;
-  box-shadow:
-    0 12px 32px rgba(0,0,0,.38),
-    inset 0 1px 0 rgba(255,255,255,.08);
-  color: #e8eeff;
-">
+    display:none;
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    z-index: 9999;
+    background: linear-gradient(
+      180deg,
+      rgba(18,27,47,0.82),
+      rgba(18,27,47,0.68)
+    );
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow:
+      0 12px 32px rgba(0,0,0,.38),
+      inset 0 1px 0 rgba(255,255,255,.08);
+    color: #e8eeff;
+  ">
     <div style="display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
       <div style="font-size:13px; line-height:1.5;">
         🔄 <b>New version available.</b> Refresh to update your app.
@@ -653,7 +653,7 @@
         </p>
 
         <div class="hero-actions">
-          <a class="hero-btn primary" href="#generator">Start Generating</a>
+          <button class="hero-btn primary" id="startGeneratingBtn" type="button">Start Generating</button>
           <a class="hero-btn secondary" href="./about.html">About Ramanujan</a>
           <a class="hero-btn secondary" href="./developer.html">Developer</a>
         </div>
@@ -661,174 +661,160 @@
 
       <div class="hero-panel">
         <div class="mini-square">
-          <div>4</div>
-          <div>9</div>
-          <div>19</div>
-          <div>98</div>
-          <div>99</div>
-          <div>18</div>
-          <div>6</div>
-          <div>7</div>
-          <div>7</div>
-          <div>6</div>
-          <div>100</div>
-          <div>17</div>
-          <div>20</div>
-          <div>97</div>
-          <div>5</div>
-          <div>8</div>
+          <div>4</div><div>9</div><div>19</div><div>98</div>
+          <div>99</div><div>18</div><div>6</div><div>7</div>
+          <div>7</div><div>6</div><div>100</div><div>17</div>
+          <div>20</div><div>97</div><div>5</div><div>8</div>
         </div>
         <div class="hero-note">Inspired by Srinivasa Ramanujan’s famous birthday magic square.</div>
       </div>
     </section>
 
-    <div class="grid">
-      <section class="card" id="generator" aria-label="Birth date to Magic Square">
-        <h2>1) Birth date → Magic Square</h2>
+    <div id="mainContent" style="display:none;">
+      <div class="grid">
+        <section class="card" id="generator" aria-label="Birth date to Magic Square">
+          <h2>1) Birth date → Magic Square</h2>
 
-        <label for="dob">Birth date</label>
-        <input id="dob" type="date" />
+          <label for="dob">Birth date</label>
+          <input id="dob" type="date" />
 
-        <div class="hint">Tip: date picker outputs valid YYYY-MM-DD.</div>
+          <div class="hint">Tip: date picker outputs valid YYYY-MM-DD.</div>
 
-        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-          <button id="btnGen" type="button" style="flex:1; min-width:180px;">Generate Square</button>
-          <button id="btnVerify1" type="button" style="flex:1; min-width:180px; opacity:.95;">Verify Magic</button>
-          <button id="btnPng1" type="button" style="flex:1; min-width:180px; opacity:.95;">Download PNG</button>
-          <button id="btnShare1" type="button" style="flex:1; min-width:180px; opacity:.95;">Copy Share Link</button>
-          <button id="btnClear1" type="button" style="flex:1; min-width:140px; opacity:.9;">Clear</button>
-        </div>
-
-        <div id="msg1" class="msg" role="status" aria-live="polite"></div>
-
-        <div id="out1" class="sq-wrap" style="display:none;">
-          <div>
-            <table class="square" id="sq1" aria-label="Generated magic square"></table>
-            <div class="pill">Magic Sum: <b id="sum1"></b></div>
-            <div class="pill">Top row: <b id="toprow1"></b></div>
-            <div class="pill">Verify: <b id="verify1"></b></div>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button id="btnGen" type="button" style="flex:1; min-width:180px;">Generate Square</button>
+            <button id="btnVerify1" type="button" style="flex:1; min-width:180px; opacity:.95;">Verify Magic</button>
+            <button id="btnPng1" type="button" style="flex:1; min-width:180px; opacity:.95;">Download PNG</button>
+            <button id="btnShare1" type="button" style="flex:1; min-width:180px; opacity:.95;">Copy Share Link</button>
+            <button id="btnClear1" type="button" style="flex:1; min-width:140px; opacity:.9;">Clear</button>
           </div>
-          <div style="flex:1; min-width:220px;">
-            <div class="pill">Formula: <b>S = d + m + (y/100) + (y%100)</b></div>
-            <div class="hint" style="margin-top:10px;">
-              This generates a true 4×4 magic square (all rows/cols/diagonals sum to S).
+
+          <div id="msg1" class="msg" role="status" aria-live="polite"></div>
+
+          <div id="out1" class="sq-wrap" style="display:none;">
+            <div>
+              <table class="square" id="sq1" aria-label="Generated magic square"></table>
+              <div class="pill">Magic Sum: <b id="sum1"></b></div>
+              <div class="pill">Top row: <b id="toprow1"></b></div>
+              <div class="pill">Verify: <b id="verify1"></b></div>
             </div>
-            <div class="hint" style="margin-top:6px;">
-              Share link example: <code class="kbd">?d=4&m=9&y=1998</code>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="card" aria-label="Reverse search from Magic Sum and Year">
-        <h2>2) Magic Sum + Year → Birth dates</h2>
-
-        <div class="row">
-          <div>
-            <label for="sumIn">Magic Sum</label>
-            <input id="sumIn" type="number" inputmode="numeric" placeholder="e.g., 130" />
-          </div>
-          <div>
-            <label for="yearIn">Year (YYYY)</label>
-            <input id="yearIn" type="number" inputmode="numeric" placeholder="e.g., 1998" />
-          </div>
-        </div>
-
-        <label for="autoSquare" style="display:flex; gap:10px; align-items:center; margin-top:12px;">
-          <input id="autoSquare" type="checkbox" style="width:auto; transform: scale(1.05);" checked />
-          Auto-generate square when I click a matching date
-        </label>
-
-        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-          <button id="btnFind" type="button" style="flex:1; min-width:180px;">Find Dates</button>
-          <button id="btnClear2" type="button" style="flex:1; min-width:140px; opacity:.9;">Clear</button>
-        </div>
-
-        <div id="msg2" class="msg" role="status" aria-live="polite"></div>
-
-        <div id="resultBox" style="display:none;">
-          <div class="pill">Matches found: <b id="count2"></b></div>
-          <div class="results" id="results" aria-label="Matching dates list"></div>
-
-          <div id="picked" style="display:none; margin-top:12px;">
-            <div class="pill">Selected date: <b id="pickedDate"></b></div>
-            <div class="sq-wrap">
-              <table class="square" id="sq2" aria-label="Magic square for selected date"></table>
-              <div>
-                <div class="pill">Magic Sum: <b id="sum2"></b></div>
-                <div class="pill">Top row: <b id="toprow2"></b></div>
-                <div class="pill">Verify: <b id="verify2"></b></div>
-
-                <button id="btnVerify2" type="button" style="margin-top:10px;">Verify Magic</button>
-                <button id="btnPng2" type="button" style="margin-top:10px;">Download PNG</button>
-                <button id="btnShare2" type="button" style="margin-top:10px;">Copy Share Link</button>
+            <div style="flex:1; min-width:220px;">
+              <div class="pill">Formula: <b>S = d + m + (y/100) + (y%100)</b></div>
+              <div class="hint" style="margin-top:10px;">
+                This generates a true 4×4 magic square (all rows/cols/diagonals sum to S).
+              </div>
+              <div class="hint" style="margin-top:6px;">
+                Share link example: <code class="kbd">?d=4&m=9&y=1998</code>
               </div>
             </div>
           </div>
-        </div>
+        </section>
+
+        <section class="card" aria-label="Reverse search from Magic Sum and Year">
+          <h2>2) Magic Sum + Year → Birth dates</h2>
+
+          <div class="row">
+            <div>
+              <label for="sumIn">Magic Sum</label>
+              <input id="sumIn" type="number" inputmode="numeric" placeholder="e.g., 130" />
+            </div>
+            <div>
+              <label for="yearIn">Year (YYYY)</label>
+              <input id="yearIn" type="number" inputmode="numeric" placeholder="e.g., 1998" />
+            </div>
+          </div>
+
+          <label for="autoSquare" style="display:flex; gap:10px; align-items:center; margin-top:12px;">
+            <input id="autoSquare" type="checkbox" style="width:auto; transform: scale(1.05);" checked />
+            Auto-generate square when I click a matching date
+          </label>
+
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button id="btnFind" type="button" style="flex:1; min-width:180px;">Find Dates</button>
+            <button id="btnClear2" type="button" style="flex:1; min-width:140px; opacity:.9;">Clear</button>
+          </div>
+
+          <div id="msg2" class="msg" role="status" aria-live="polite"></div>
+
+          <div id="resultBox" style="display:none;">
+            <div class="pill">Matches found: <b id="count2"></b></div>
+            <div class="results" id="results" aria-label="Matching dates list"></div>
+
+            <div id="picked" style="display:none; margin-top:12px;">
+              <div class="pill">Selected date: <b id="pickedDate"></b></div>
+              <div class="sq-wrap">
+                <table class="square" id="sq2" aria-label="Magic square for selected date"></table>
+                <div>
+                  <div class="pill">Magic Sum: <b id="sum2"></b></div>
+                  <div class="pill">Top row: <b id="toprow2"></b></div>
+                  <div class="pill">Verify: <b id="verify2"></b></div>
+
+                  <button id="btnVerify2" type="button" style="margin-top:10px;">Verify Magic</button>
+                  <button id="btnPng2" type="button" style="margin-top:10px;">Download PNG</button>
+                  <button id="btnShare2" type="button" style="margin-top:10px;">Copy Share Link</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="seo-section">
+        <h2>What is a Ramanujan Magic Square?</h2>
+        <p>
+          A Ramanujan magic square is a special 4×4 grid where the sum of each row,
+          column, and diagonal equals the same number called the magic sum.
+          This tool generates a personalized Ramanujan-style magic square
+          based on your birth date.
+        </p>
+
+        <h2>How does the Birthday Magic Square work?</h2>
+        <p>
+          The magic sum is calculated from the day, month, and year digits of
+          your birth date. Using a special construction pattern inspired by
+          Srinivasa Ramanujan, the tool builds a 4×4 square where every row,
+          column, and diagonal produces the same total.
+        </p>
       </section>
-    </div>
 
-    <section class="seo-section">
-      <h2>What is a Ramanujan Magic Square?</h2>
-      <p>
-        A Ramanujan magic square is a special 4×4 grid where the sum of each row,
-        column, and diagonal equals the same number called the magic sum.
-        This tool generates a personalized Ramanujan-style magic square
-        based on your birth date.
-      </p>
+      <section class="seo-section">
+        <h2>Example Birthday Magic Square</h2>
+        <p>
+          For example, a birth date of 04-09-1998 produces a magic sum of 130.
+          The generated 4×4 square ensures that each row, column and diagonal
+          adds up to the same value.
+        </p>
 
-      <h2>How does the Birthday Magic Square work?</h2>
-      <p>
-        The magic sum is calculated from the day, month, and year digits of
-        your birth date. Using a special construction pattern inspired by
-        Srinivasa Ramanujan, the tool builds a 4×4 square where every row,
-        column, and diagonal produces the same total.
-      </p>
-    </section>
+        <h2>Why Ramanujan Magic Squares are Interesting</h2>
+        <p>
+          Srinivasa Ramanujan created a famous magic square based on his birth
+          date. Inspired by that idea, this generator builds a personalised
+          magic square using your own birthday.
+        </p>
+      </section>
 
-    <section class="seo-section">
+      <footer class="pro-footer">
+        <div class="pro-footer-top">
+          <div>
+            <div class="footer-brand">🎩 Ramanujan Magic Square Generator</div>
+            <div class="footer-text">
+              A modern math-inspired web app for generating personalized birthday magic squares.
+            </div>
+          </div>
 
-      <h2>Example Birthday Magic Square</h2>
-
-      <p>
-        For example, a birth date of 04-09-1998 produces a magic sum of 130.
-        The generated 4×4 square ensures that each row, column and diagonal
-        adds up to the same value.
-      </p>
-
-      <h2>Why Ramanujan Magic Squares are Interesting</h2>
-
-      <p>
-        Srinivasa Ramanujan created a famous magic square based on his birth
-        date. Inspired by that idea, this generator builds a personalised
-        magic square using your own birthday.
-      </p>
-
-    </section>
-
-    <footer class="pro-footer">
-      <div class="pro-footer-top">
-        <div>
-          <div class="footer-brand">🎩 Ramanujan Magic Square Generator</div>
-          <div class="footer-text">
-            A modern math-inspired web app for generating personalized birthday magic squares.
+          <div class="footer-links">
+            <a href="./index.html">Home</a>
+            <a href="./about.html">About</a>
+            <a href="./developer.html">Developer</a>
+            <a href="./sitemap.xml">Sitemap</a>
           </div>
         </div>
 
-        <div class="footer-links">
-          <a href="./index.html">Home</a>
-          <a href="./about.html">About</a>
-          <a href="./developer.html">Developer</a>
-          <a href="./sitemap.xml">Sitemap</a>
+        <div class="pro-footer-bottom">
+          <span>Quick test: <code class="kbd">04-09-1998</code> ⇒ sum <code class="kbd">130</code></span>
+          <span>Built with ❤️ by Alif Rabbi</span>
         </div>
-      </div>
-
-      <div class="pro-footer-bottom">
-        <span>Quick test: <code class="kbd">04-09-1998</code> ⇒ sum <code class="kbd">130</code></span>
-        <span>Built with ❤️ by Alif Rabbi</span>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </div>
 
   <script>
@@ -908,7 +894,7 @@
     function isLeapYear(y) {
       if (y % 400 === 0) return true;
       if (y % 100 === 0) return false;
-      return (y % 4 === 0);
+      return y % 4 === 0;
     }
 
     function daysInMonth(m, y) {
@@ -992,19 +978,20 @@
         sums.push(s);
       }
 
-      let d1 = 0, d2 = 0;
+      let d1 = 0;
+      let d2 = 0;
       for (let i = 0; i < 4; i++) {
         d1 += sq[i][i];
         d2 += sq[i][3 - i];
       }
       sums.push(d1, d2);
 
-      const ok = sums.every(v => v === expectedSum);
+      const ok = sums.every((v) => v === expectedSum);
       if (ok) {
         return { ok: true, detail: `✅ All rows/cols/diagonals = ${expectedSum}` };
       }
 
-      const bad = sums.filter(v => v !== expectedSum);
+      const bad = sums.filter((v) => v !== expectedSum);
       return { ok: false, detail: `❌ Not magic. Expected ${expectedSum}, mismatches: ${bad.join(", ")}` };
     }
 
@@ -1148,8 +1135,31 @@
     const btnPng2 = document.getElementById("btnPng2");
     const btnShare2 = document.getElementById("btnShare2");
 
+    const startGeneratingBtn = document.getElementById("startGeneratingBtn");
+    const mainContent = document.getElementById("mainContent");
+
     let lastSq1 = null;
     let lastS1 = null;
+
+    function showMainContent(scrollToGenerator = false) {
+      if (!mainContent) return;
+      mainContent.style.display = "block";
+
+      if (scrollToGenerator) {
+        setTimeout(() => {
+          const generator = document.getElementById("generator");
+          if (generator) {
+            generator.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        }, 80);
+      }
+    }
+
+    if (startGeneratingBtn && mainContent) {
+      startGeneratingBtn.addEventListener("click", () => {
+        showMainContent(true);
+      });
+    }
 
     btnGen.addEventListener("click", () => {
       const p = parseDateInput(dob.value);
@@ -1303,8 +1313,8 @@
         return;
       }
 
-      const cells = [...sq2.querySelectorAll("td")].map(td => Number(td.textContent));
-      if (cells.length !== 16 || cells.some(n => !Number.isFinite(n))) {
+      const cells = [...sq2.querySelectorAll("td")].map((td) => Number(td.textContent));
+      if (cells.length !== 16 || cells.some((n) => !Number.isFinite(n))) {
         setMsg(msg2, "No square found to verify.", "bad");
         return;
       }
@@ -1324,7 +1334,7 @@
     btnPng2.addEventListener("click", () => {
       const label = pickedDate.textContent?.trim();
       const expected = Number(sum2.textContent);
-      const cells = [...sq2.querySelectorAll("td")].map(td => Number(td.textContent));
+      const cells = [...sq2.querySelectorAll("td")].map((td) => Number(td.textContent));
 
       if (!label || !Number.isFinite(expected) || cells.length !== 16) {
         setMsg(msg2, "Select a date first.", "bad");
@@ -1377,10 +1387,10 @@
       const maxD = daysInMonth(m, y);
       if (m < 1 || m > 12 || d < 1 || d > maxD) return;
 
+      showMainContent(false);
       dob.value = `${String(y).padStart(4, "0")}-${pad2(m)}-${pad2(d)}`;
       btnGen.click();
     })();
   </script>
 </body>
-
 </html>
