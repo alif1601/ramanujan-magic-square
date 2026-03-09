@@ -355,6 +355,31 @@
         transform: translateY(0);
       }
     }
+
+    .card.fade-up {
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease;
+    }
+
+    .card.fade-up:hover {
+      transform: translateY(-8px) scale(1.01);
+      border-color: rgba(110, 231, 255, .30);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(110, 231, 255, .04));
+      box-shadow:
+        0 20px 40px rgba(0, 0, 0, .30),
+        0 0 24px rgba(110, 231, 255, .08);
+    }
+
+    .skill:hover {
+      transform: translateY(-3px);
+      border-color: rgba(110, 231, 255, .24);
+      background: rgba(110, 231, 255, .05);
+      transition: .25s ease;
+    }
   </style>
 
   <script type="application/ld+json">
@@ -439,11 +464,7 @@
             <a href="https://github.com/alif1601/ramanujan-magic-square" target="_blank" rel="noopener noreferrer">💻
               Project Repository</a>
           </div>
-          <div class="links" style="margin-top:12px;">
-<a href="https://sites.google.com/diu.edu.bd/alif-rabbi/home" target="_blank">
-🌐 My Portfolio Website
-</a>
-</div>
+
         </div>
 
         <div class="card fade-up">
@@ -617,8 +638,8 @@
     </section>
 
     <footer class="footer">
-<span>© 2025 Alif Rabbi. All Rights Reserved.</span>
-</footer>
+      <span>© 2025 Alif Rabbi. All Rights Reserved.</span>
+    </footer>
 
   </div>
 
