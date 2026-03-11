@@ -19,9 +19,23 @@ async function isAdmin(uid) {
   return snap.exists() && snap.data().active === true;
 }
 
+function humanizeAuthError(code) {
+  switch (code) {
+    case "auth/invalid-email":
+      return "Invalid email format.";
+    case "auth/invalid-credential":
+    case "auth/wrong-password":
+    case "auth/user-not-found":
+      return "Incorrect email or password.";
+    case "auth/too-many-requests":
+      return "Too many attempts. Try again later.";
+    default:
+      return "Login failed. Please try again.";
+  }
+}
+
 loginBtn?.addEventListener("click", async () => {
   msg.textContent = "Signing in...";
-
   try {
     const cred = await signInWithEmailAndPassword(
       auth,
@@ -29,26 +43,21 @@ loginBtn?.addEventListener("click", async () => {
       passwordEl.value
     );
 
-    const uid = cred.user.uid;
-    const ok = await isAdmin(uid);
-
+    const ok = await isAdmin(cred.user.uid);
     if (!ok) {
-      msg.textContent = `Not authorized as admin. UID: ${uid}`;
       await signOut(auth);
+      msg.textContent = "This account is not authorized as admin.";
       return;
     }
 
     window.location.href = "./admin.html";
   } catch (err) {
-    msg.textContent = err.message || "Login failed.";
+    msg.textContent = humanizeAuthError(err.code);
   }
 });
 
 onAuthStateChanged(auth, async (user) => {
   if (!user) return;
-
   const ok = await isAdmin(user.uid);
-  if (ok) {
-    window.location.href = "./admin.html";
-  }
+  if (ok) window.location.href = "./admin.html";
 });
