@@ -14,6 +14,10 @@ const sharesEl = document.getElementById("shares");
 const adminMsg = document.getElementById("adminMsg");
 const logoutBtn = document.getElementById("logoutBtn");
 
+const analyticsVisitors = document.getElementById("analyticsVisitors");
+const analyticsSquares = document.getElementById("analyticsSquares");
+const analyticsShares = document.getElementById("analyticsShares");
+
 async function isAdmin(uid) {
   const snap = await getDoc(doc(db, "admins", uid));
   return snap.exists() && snap.data().active === true;
@@ -21,16 +25,40 @@ async function isAdmin(uid) {
 
 async function loadStats() {
   const snap = await getDoc(doc(db, "stats", "global"));
-
-  if (!snap.exists()) {
-    adminMsg.textContent = "Logged in, but stats/global document was not found.";
-    return;
-  }
+  if (!snap.exists()) return;
 
   const data = snap.data();
-  visitorsEl.textContent = data.visitors ?? 0;
-  squaresEl.textContent = data.squaresGenerated ?? 0;
-  sharesEl.textContent = data.shareLinks ?? 0;
+
+  const visitors = data.visitors ?? 0;
+  const squares = data.squaresGenerated ?? 0;
+  const shares = data.shareLinks ?? 0;
+
+  visitorsEl.textContent = visitors;
+  squaresEl.textContent = squares;
+  sharesEl.textContent = shares;
+
+  if (analyticsVisitors) analyticsVisitors.textContent = visitors;
+  if (analyticsSquares) analyticsSquares.textContent = squares;
+  if (analyticsShares) analyticsShares.textContent = shares;
+}
+
+function setupSidebarTabs() {
+  const links = document.querySelectorAll(".sidebar nav a[data-section]");
+  const sections = document.querySelectorAll(".panel-section");
+
+  links.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const target = link.dataset.section;
+
+      links.forEach(a => a.classList.remove("active"));
+      link.classList.add("active");
+
+      sections.forEach(section => section.classList.remove("active"));
+      document.getElementById(`section-${target}`)?.classList.add("active");
+    });
+  });
 }
 
 onAuthStateChanged(auth, async (user) => {
@@ -40,15 +68,15 @@ onAuthStateChanged(auth, async (user) => {
   }
 
   const ok = await isAdmin(user.uid);
-
   if (!ok) {
     await signOut(auth);
     window.location.href = "./admin-login.html";
     return;
   }
 
-  adminMsg.textContent = `Logged in as ${user.email} | UID: ${user.uid}`;
+  adminMsg.textContent = `Logged in as ${user.email}`;
   await loadStats();
+  setupSidebarTabs();
 });
 
 logoutBtn?.addEventListener("click", async (e) => {
