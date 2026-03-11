@@ -1,69 +1,103 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Admin Panel | Ramanujan Magic Square</title>
-  <link rel="stylesheet" href="./admin.css">
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Admin Dashboard | Ramanujan Magic Square</title>
+
+<link rel="stylesheet" href="./admin.css">
+
 </head>
+
 <body>
-  <div class="admin-layout">
-    <aside class="sidebar">
-      <div class="sidebar-brand">Admin Panel</div>
-      <nav>
-        <a class="active" href="#">Dashboard</a>
-        <a href="#">Users</a>
-        <a href="#">Analytics</a>
-        <a href="#">Tech Stack</a>
-        <a href="#">Settings</a>
-        <a href="#" id="logoutBtn">Logout</a>
-      </nav>
-    </aside>
 
-    <main class="content">
-      <h1>Admin Dashboard</h1>
+<div class="admin-layout">
 
-      <div class="cards">
-        <div class="card">
-          <h3>Total Visitors</h3>
-          <p id="visitors">0</p>
-        </div>
+<aside class="sidebar">
 
-        <div class="card">
-          <h3>Squares Generated</h3>
-          <p id="squares">0</p>
-        </div>
+<div class="sidebar-brand">Admin Panel</div>
 
-        <div class="card">
-          <h3>Share Links</h3>
-          <p id="shares">0</p>
-        </div>
-      </div>
+<nav>
 
-      <h2>Project Tech Stack</h2>
-      <div class="tech-grid">
-        <div class="tech">JavaScript</div>
-        <div class="tech">HTML5</div>
-        <div class="tech">CSS3</div>
-        <div class="tech">Python</div>
-        <div class="tech">C#</div>
-        <div class="tech">SQL</div>
-      </div>
+<a class="active" href="#">Dashboard</a>
+<a href="#">Users</a>
+<a href="#">Analytics</a>
+<a href="#">Tech Stack</a>
+<a href="#">Settings</a>
 
-      <h2>System Status</h2>
-      <div class="status">
-        <div class="status-box good">Web App Running</div>
-        <div class="status-box good">Analytics Connected</div>
-        <div class="status-box good">SEO Enabled</div>
-      </div>
+<a id="logoutBtn" href="#">Logout</a>
 
-      <div class="card" style="margin-top:20px;">
-        <h3>Admin Info</h3>
-        <p id="adminMsg">Checking authentication...</p>
-      </div>
-    </main>
-  </div>
+</nav>
 
-  <script type="module" src="./admin-panel.js"></script>
+</aside>
+
+
+<main class="content">
+
+<h1>Admin Dashboard</h1>
+
+<div class="cards">
+
+<div class="card">
+<h3>Total Visitors</h3>
+<p id="visitors">0</p>
+</div>
+
+<div class="card">
+<h3>Squares Generated</h3>
+<p id="squares">0</p>
+</div>
+
+<div class="card">
+<h3>Share Links</h3>
+<p id="shares">0</p>
+</div>
+
+</div>
+
+
+<h2>Project Tech Stack</h2>
+
+<div class="tech-grid">
+
+<div class="tech">JavaScript</div>
+<div class="tech">HTML5</div>
+<div class="tech">CSS3</div>
+<div class="tech">Python</div>
+<div class="tech">C#</div>
+<div class="tech">SQL</div>
+
+</div>
+
+
+<h2>System Status</h2>
+
+<div class="status">
+
+<div class="status-box good">Web App Running</div>
+<div class="status-box good">Analytics Connected</div>
+<div class="status-box good">SEO Enabled</div>
+
+</div>
+
+
+<div class="card admin-info">
+
+<h3>Admin Info</h3>
+
+<p id="adminMsg">Checking authentication...</p>
+
+</div>
+
+
+</main>
+
+</div>
+
+<script type="module" src="./admin-panel.js"></script>
+
 </body>
 </html>
