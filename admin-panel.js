@@ -21,7 +21,11 @@ async function isAdmin(uid) {
 
 async function loadStats() {
   const snap = await getDoc(doc(db, "stats", "global"));
-  if (!snap.exists()) return;
+
+  if (!snap.exists()) {
+    adminMsg.textContent = "Logged in, but stats/global document was not found.";
+    return;
+  }
 
   const data = snap.data();
   visitorsEl.textContent = data.visitors ?? 0;
@@ -36,12 +40,14 @@ onAuthStateChanged(auth, async (user) => {
   }
 
   const ok = await isAdmin(user.uid);
+
   if (!ok) {
+    await signOut(auth);
     window.location.href = "./admin-login.html";
     return;
   }
 
-  adminMsg.textContent = `Logged in as ${user.email}`;
+  adminMsg.textContent = `Logged in as ${user.email} | UID: ${user.uid}`;
   await loadStats();
 });
 
