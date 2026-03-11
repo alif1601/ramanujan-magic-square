@@ -22,6 +22,7 @@ async function isAdmin(uid) {
 async function loadStats() {
   const snap = await getDoc(doc(db, "stats", "global"));
   if (!snap.exists()) return;
+
   const data = snap.data();
   visitorsEl.textContent = data.visitors ?? 0;
   squaresEl.textContent = data.squaresGenerated ?? 0;
