@@ -1,103 +1,102 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<title>Admin Dashboard | Ramanujan Magic Square</title>
-
-<link rel="stylesheet" href="./admin.css">
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin Dashboard | Ramanujan Magic Square</title>
+  <link rel="stylesheet" href="./admin.css">
 </head>
-
 <body>
+  <div class="admin-layout">
+    <aside class="sidebar">
+      <div class="sidebar-brand">Admin Panel</div>
+      <nav>
+        <a class="active" href="#" data-section="dashboard">Dashboard</a>
+        <a href="#" data-section="users">Users</a>
+        <a href="#" data-section="analytics">Analytics</a>
+        <a href="#" data-section="tech">Tech Stack</a>
+        <a href="#" data-section="settings">Settings</a>
+        <a id="logoutBtn" href="#">Logout</a>
+      </nav>
+    </aside>
 
-<div class="admin-layout">
+    <main class="content">
+      <section class="panel-section active" id="section-dashboard">
+        <h1>Admin Dashboard</h1>
 
-<aside class="sidebar">
+        <div class="cards">
+          <div class="card">
+            <h3>Total Visitors</h3>
+            <p id="visitors">0</p>
+          </div>
+          <div class="card">
+            <h3>Squares Generated</h3>
+            <p id="squares">0</p>
+          </div>
+          <div class="card">
+            <h3>Share Links</h3>
+            <p id="shares">0</p>
+          </div>
+        </div>
 
-<div class="sidebar-brand">Admin Panel</div>
+        <div class="card admin-info">
+          <h3>Admin Info</h3>
+          <p id="adminMsg">Checking authentication...</p>
+        </div>
+      </section>
 
-<nav>
+      <section class="panel-section" id="section-users">
+        <h1>Users</h1>
+        <div class="card">
+          <h3>Admin Users</h3>
+          <p>Current access is controlled by the <code>admins</code> collection in Firestore.</p>
+          <p>Add or remove admin access from Firebase Console → Firestore → <code>admins</code>.</p>
+        </div>
+      </section>
 
-<a class="active" href="#">Dashboard</a>
-<a href="#">Users</a>
-<a href="#">Analytics</a>
-<a href="#">Tech Stack</a>
-<a href="#">Settings</a>
+      <section class="panel-section" id="section-analytics">
+        <h1>Analytics</h1>
+        <div class="cards">
+          <div class="card">
+            <h3>Visitors</h3>
+            <p id="analyticsVisitors">0</p>
+          </div>
+          <div class="card">
+            <h3>Generated</h3>
+            <p id="analyticsSquares">0</p>
+          </div>
+          <div class="card">
+            <h3>Shares</h3>
+            <p id="analyticsShares">0</p>
+          </div>
+        </div>
+      </section>
 
-<a id="logoutBtn" href="#">Logout</a>
+      <section class="panel-section" id="section-tech">
+        <h1>Project Tech Stack</h1>
+        <div class="tech-grid">
+          <div class="tech">JavaScript</div>
+          <div class="tech">HTML5</div>
+          <div class="tech">CSS3</div>
+          <div class="tech">Python</div>
+          <div class="tech">C#</div>
+          <div class="tech">SQL</div>
+          <div class="tech">Firebase Auth</div>
+          <div class="tech">Firestore</div>
+        </div>
+      </section>
 
-</nav>
+      <section class="panel-section" id="section-settings">
+        <h1>Settings</h1>
+        <div class="card">
+          <h3>Project Settings</h3>
+          <p>Manage Firebase config, Firestore rules, SEO, and analytics settings from the codebase and Firebase Console.</p>
+          <p>Current admin dashboard is connected to <code>stats/global</code> and <code>admins/{uid}</code>.</p>
+        </div>
+      </section>
+    </main>
+  </div>
 
-</aside>
-
-
-<main class="content">
-
-<h1>Admin Dashboard</h1>
-
-<div class="cards">
-
-<div class="card">
-<h3>Total Visitors</h3>
-<p id="visitors">0</p>
-</div>
-
-<div class="card">
-<h3>Squares Generated</h3>
-<p id="squares">0</p>
-</div>
-
-<div class="card">
-<h3>Share Links</h3>
-<p id="shares">0</p>
-</div>
-
-</div>
-
-
-<h2>Project Tech Stack</h2>
-
-<div class="tech-grid">
-
-<div class="tech">JavaScript</div>
-<div class="tech">HTML5</div>
-<div class="tech">CSS3</div>
-<div class="tech">Python</div>
-<div class="tech">C#</div>
-<div class="tech">SQL</div>
-
-</div>
-
-
-<h2>System Status</h2>
-
-<div class="status">
-
-<div class="status-box good">Web App Running</div>
-<div class="status-box good">Analytics Connected</div>
-<div class="status-box good">SEO Enabled</div>
-
-</div>
-
-
-<div class="card admin-info">
-
-<h3>Admin Info</h3>
-
-<p id="adminMsg">Checking authentication...</p>
-
-</div>
-
-
-</main>
-
-</div>
-
-<script type="module" src="./admin-panel.js"></script>
-
+  <script type="module" src="./admin-panel.js"></script>
 </body>
 </html>
