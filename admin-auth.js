@@ -1,7 +1,8 @@
 import { auth, db } from "./firebase-config.js";
 import {
   signInWithEmailAndPassword,
-  onAuthStateChanged
+  onAuthStateChanged,
+  signOut
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 import {
   doc,
@@ -18,31 +19,34 @@ async function isAdmin(uid) {
   return snap.exists() && snap.data().active === true;
 }
 
-if (loginBtn) {
-  loginBtn.addEventListener("click", async () => {
-    msg.textContent = "Signing in...";
-    try {
-      const cred = await signInWithEmailAndPassword(
-        auth,
-        emailEl.value.trim(),
-        passwordEl.value
-      );
+loginBtn?.addEventListener("click", async () => {
+  msg.textContent = "Signing in...";
 
-      const ok = await isAdmin(cred.user.uid);
-      if (!ok) {
-        msg.textContent = "Not authorized as admin.";
-        return;
-      }
+  try {
+    const cred = await signInWithEmailAndPassword(
+      auth,
+      emailEl.value.trim(),
+      passwordEl.value
+    );
 
-      window.location.href = "./admin.html";
-    } catch (err) {
-      msg.textContent = err.message || "Login failed.";
+    const uid = cred.user.uid;
+    const ok = await isAdmin(uid);
+
+    if (!ok) {
+      msg.textContent = `Not authorized as admin. UID: ${uid}`;
+      await signOut(auth);
+      return;
     }
-  });
-}
+
+    window.location.href = "./admin.html";
+  } catch (err) {
+    msg.textContent = err.message || "Login failed.";
+  }
+});
 
 onAuthStateChanged(auth, async (user) => {
   if (!user) return;
+
   const ok = await isAdmin(user.uid);
   if (ok) {
     window.location.href = "./admin.html";
