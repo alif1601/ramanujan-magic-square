@@ -26,6 +26,7 @@
 <a href="#">Analytics</a>
 <a href="#">Tech Stack</a>
 <a href="#">Settings</a>
+<a href="#" id="logoutBtn">Logout</a>
 
 </nav>
 
@@ -40,17 +41,17 @@
 
 <div class="card">
 <h3>Total Visitors</h3>
-<p id="visitors">1,240</p>
+<p id="visitors">0</p>
 </div>
 
 <div class="card">
 <h3>Squares Generated</h3>
-<p id="squares">4,820</p>
+<p id="squares">0</p>
 </div>
 
 <div class="card">
 <h3>Share Links</h3>
-<p>960</p>
+<p id="shares">0</p>
 </div>
 
 </div>
@@ -88,11 +89,98 @@ SEO Enabled
 
 </div>
 
+<div class="card" style="margin-top:20px;">
+<h3>Admin Info</h3>
+<p id="adminMsg">Checking authentication...</p>
+</div>
+
 </main>
 
 </div>
 
-<script src="./admin.js"></script>
+
+<script type="module">
+
+import { auth, db } from "./firebase-config.js";
+
+import {
+onAuthStateChanged,
+signOut
+} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+
+import {
+doc,
+getDoc
+} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+
+const visitorsEl = document.getElementById("visitors");
+const squaresEl = document.getElementById("squares");
+const sharesEl = document.getElementById("shares");
+const adminMsg = document.getElementById("adminMsg");
+const logoutBtn = document.getElementById("logoutBtn");
+
+
+async function isAdmin(uid){
+
+const snap = await getDoc(doc(db,"admins",uid));
+
+return snap.exists() && snap.data().active === true;
+
+}
+
+
+async function loadStats(){
+
+const snap = await getDoc(doc(db,"stats","global"));
+
+if(!snap.exists()) return;
+
+const data = snap.data();
+
+visitorsEl.textContent = data.visitors ?? 0;
+squaresEl.textContent = data.squaresGenerated ?? 0;
+sharesEl.textContent = data.shareLinks ?? 0;
+
+}
+
+
+onAuthStateChanged(auth, async (user)=>{
+
+if(!user){
+
+window.location.href="./admin-login.html";
+return;
+
+}
+
+const ok = await isAdmin(user.uid);
+
+if(!ok){
+
+window.location.href="./admin-login.html";
+return;
+
+}
+
+adminMsg.textContent="Logged in as "+user.email;
+
+await loadStats();
+
+});
+
+
+logoutBtn.addEventListener("click",async(e)=>{
+
+e.preventDefault();
+
+await signOut(auth);
+
+window.location.href="./admin-login.html";
+
+});
+
+</script>
 
 </body>
 </html>
