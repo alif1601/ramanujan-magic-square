@@ -1,9 +1,8 @@
 import { db } from "./firebase-config.js";
 import {
   doc,
-  runTransaction,
-  increment,
-  setDoc
+  setDoc,
+  increment
 } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
 const statsRef = doc(db, "stats", "global");
