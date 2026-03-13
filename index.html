@@ -44,8 +44,8 @@
     content="default-src 'self';
              img-src 'self' data: https:;
              style-src 'self' 'unsafe-inline';
-             script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com;
-             connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com;
+             script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://www.gstatic.com;
+             connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com;
              object-src 'none';
              base-uri 'self';
              frame-ancestors 'none';"
@@ -810,7 +810,7 @@
         </div>
 
         <a class="hero-btn secondary" href="./admin.html">Admin</a>
-        
+
         <div class="pro-footer-bottom">
           <span>Quick test: <code class="kbd">04-09-1998</code> ⇒ sum <code class="kbd">130</code></span>
           <span>Built with ❤️ by Alif Rabbi</span>
@@ -1393,6 +1393,32 @@
       dob.value = `${String(y).padStart(4, "0")}-${pad2(m)}-${pad2(d)}`;
       btnGen.click();
     })();
+  </script>
+
+  <script type="module">
+    import {
+      trackVisitorOnce,
+      trackSquareGenerated,
+      trackShareLink
+    } from "./public-metrics.js";
+
+    trackVisitorOnce().catch(console.error);
+
+    const btnGenMetric = document.getElementById("btnGen");
+    const btnShare1Metric = document.getElementById("btnShare1");
+    const btnShare2Metric = document.getElementById("btnShare2");
+
+    btnGenMetric?.addEventListener("click", () => {
+      trackSquareGenerated().catch(console.error);
+    });
+
+    btnShare1Metric?.addEventListener("click", () => {
+      trackShareLink().catch(console.error);
+    });
+
+    btnShare2Metric?.addEventListener("click", () => {
+      trackShareLink().catch(console.error);
+    });
   </script>
 </body>
 </html>
