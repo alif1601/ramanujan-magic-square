@@ -30,17 +30,14 @@ const analyticsSquares =
 const analyticsShares =
   document.getElementById("analyticsShares");
 
-// Check admin access
+// Verify admin access
 async function isAdmin(uid) {
   const snap = await getDoc(doc(db, "admins", uid));
 
-  return (
-    snap.exists() &&
-    snap.data().active === true
-  );
+  return snap.exists() && snap.data().active === true;
 }
 
-// Real-time Firestore listener
+// REAL-TIME FIRESTORE LISTENER
 function listenStats() {
   const statsRef = doc(db, "stats", "global");
 
@@ -54,12 +51,12 @@ function listenStats() {
       const squares = data.squaresGenerated ?? 0;
       const shares = data.shareLinks ?? 0;
 
-      // Dashboard
+      // Dashboard update
       visitorsEl.textContent = visitors;
       squaresEl.textContent = squares;
       sharesEl.textContent = shares;
 
-      // Analytics
+      // Analytics update
       if (analyticsVisitors) {
         analyticsVisitors.textContent = visitors;
       }
@@ -71,12 +68,19 @@ function listenStats() {
       if (analyticsShares) {
         analyticsShares.textContent = shares;
       }
+
+      console.log("Live stats updated:", {
+        visitors,
+        squares,
+        shares
+      });
     },
 
     (error) => {
-      console.error("Firestore stats error:", error);
+      console.error("Firestore listener error:", error);
+
       adminMsg.textContent =
-        "Unable to receive live statistics. Check Firestore Rules.";
+        "Live statistics unavailable. Check Firestore Rules.";
     }
   );
 }
@@ -130,19 +134,18 @@ onAuthStateChanged(auth, async (user) => {
       return;
     }
 
-    adminMsg.textContent =
-      `Logged in as ${user.email}`;
+    adminMsg.textContent = `Logged in as ${user.email}`;
 
     setupSidebarTabs();
 
-    // Start live statistics updates
+    // Start real-time updates
     listenStats();
 
   } catch (error) {
     console.error("Admin initialization error:", error);
 
     adminMsg.textContent =
-      "Admin initialization failed. Check console and Firestore Rules.";
+      "Admin initialization failed. Check Console.";
   }
 });
 
