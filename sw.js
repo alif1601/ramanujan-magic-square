@@ -1,5 +1,7 @@
-/* sw.js — safe production PWA cache with update flow */
-const CACHE_VERSION = "v17";
+
+/* Ramanujan Magic Square - PWA Service Worker */
+
+const CACHE_VERSION = "v18";
 const CACHE_NAME = `ramanujan-magic-square-${CACHE_VERSION}`;
 
 const ASSETS = [
@@ -12,7 +14,7 @@ const ASSETS = [
   "./assets/og-image.png"
 ];
 
-// Install: warm cache, but don't fail if one asset is missing
+// Install
 self.addEventListener("install", (event) => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
@@ -22,48 +24,58 @@ self.addEventListener("install", (event) => {
         try {
           const req = new Request(path, { cache: "reload" });
           const res = await fetch(req);
+
           if (res && res.ok) {
             await cache.put(req, res);
           }
         } catch {
-          // ignore missing/broken asset
+          // Ignore missing assets
         }
       })
     );
   })());
 });
 
-// Activate: remove old caches, take control
+// Activate
 self.addEventListener("activate", (event) => {
   event.waitUntil((async () => {
     const keys = await caches.keys();
 
     await Promise.all(
       keys
-        .filter((k) => k.startsWith("ramanujan-magic-square-") && k !== CACHE_NAME)
-        .map((k) => caches.delete(k))
+        .filter(
+          (key) =>
+            key.startsWith("ramanujan-magic-square-") &&
+            key !== CACHE_NAME
+        )
+        .map((key) => caches.delete(key))
     );
 
     await self.clients.claim();
 
-    const clients = await self.clients.matchAll({ type: "window" });
+    const clients = await self.clients.matchAll({
+      type: "window"
+    });
+
     for (const client of clients) {
-      client.postMessage({ type: "SW_ACTIVATED", version: CACHE_VERSION });
+      client.postMessage({
+        type: "SW_ACTIVATED",
+        version: CACHE_VERSION
+      });
     }
   })());
 });
 
-// Allow page to promote waiting worker
+// Message
 self.addEventListener("message", (event) => {
   if (!event.data) return;
+
   if (event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
   }
 });
 
-// Fetch strategy:
-// - HTML/navigation: network-first, cache fallback
-// - Static assets: cache-first, network fallback
+// Fetch
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   const url = new URL(req.url);
@@ -72,12 +84,11 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
 
   const accept = req.headers.get("accept") || "";
-  const isHTML = req.mode === "navigate" || accept.includes("text/html");
+  const isHTML =
+    req.mode === "navigate" ||
+    accept.includes("text/html");
 
-  const htmlCacheKey = isHTML
-    ? new Request(url.pathname, { headers: req.headers })
-    : req;
-
+  // HTML: Network first
   if (isHTML) {
     event.respondWith((async () => {
       try {
@@ -85,40 +96,78 @@ self.addEventListener("fetch", (event) => {
 
         if (res && res.ok) {
           const cache = await caches.open(CACHE_NAME);
-          await cache.put(htmlCacheKey, res.clone());
+          await cache.put(
+            new Request(url.pathname, { headers: req.headers }),
+            res.clone()
+          );
         }
 
         return res;
       } catch {
         const cache = await caches.open(CACHE_NAME);
-        const cached =
-          await cache.match(htmlCacheKey) ||
-          await cache.match("./index.html");
 
-        return cached || new Response("Offline", {
-          status: 503,
-          headers: { "Content-Type": "text/plain" }
-        });
+        return (
+          await cache.match(
+            new Request(url.pathname, { headers: req.headers })
+          )
+        ) || await cache.match("./index.html") ||
+          new Response("Offline", { status: 503 });
       }
     })());
+
     return;
   }
 
+  // JavaScript and CSS: Network first
+  // This prevents outdated admin-panel.js from being served.
+  if (req.destination === "script" ||
+      req.destination === "style") {
+
+    event.respondWith((async () => {
+      const cache = await caches.open(CACHE_NAME);
+
+      try {
+        const networkRequest = new Request(req, {
+          cache: "no-cache"
+        });
+
+        const res = await fetch(networkRequest);
+
+        if (res && res.ok) {
+          await cache.put(req, res.clone());
+        }
+
+        return res;
+      } catch {
+        return (
+          await cache.match(req)
+        ) || new Response("Offline", {
+          status: 503
+        });
+      }
+    })());
+
+    return;
+  }
+
+  // Other static assets: Cache first
   event.respondWith((async () => {
     const cache = await caches.open(CACHE_NAME);
     const cached = await cache.match(req);
+
     if (cached) return cached;
 
     try {
       const res = await fetch(req);
+
       if (res && res.ok) {
         await cache.put(req, res.clone());
       }
+
       return res;
     } catch {
-      return cached || new Response("Offline", {
-        status: 503,
-        headers: { "Content-Type": "text/plain" }
+      return new Response("Offline", {
+        status: 503
       });
     }
   })());
